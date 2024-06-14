@@ -1,0 +1,20 @@
+Anotações Voltada a Versionamento de Código
+*Sistemas de Controle de Versão*
+Controlam as versões de um arquivo ao longo do desenvolvimento da aplicação:
+- Registra o histórioco de atualizações de um arquivo
+- Gerencia  quais foram as Alterações, data, autor e etc.
+- Organização, controle e Segurança.
+
+*Tipos de VCS*
+VCS Centralizado: Subversion
+- Repositório Único, existe um repositório central que contém todas as versões do código. 
+Os desenvolvedores precisam se conectar a esse repositório central para fazer qualquer 
+operação (checkout, commit, update), dependendo da conectividade para realizar operações.
+- Backup simples, por ser Centralizado.
+- Desempenho lento por depender do servidor central.
+VCS Distribuídos: Git
+- Repositório local e completo, cada desenvolvedor possui uma copida completa incluindo
+todo histórioco de mudança. Permite operações por não depender da conexão com servidor 
+local, podendo ser feita quando conveniente.
+- A chance de perder algum arquivo e menos provável por possuir diversas cópias.
+- Complexidade de sincronização.
