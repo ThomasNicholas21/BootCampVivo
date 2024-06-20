@@ -1,5 +1,5 @@
 ## Anotações Voltada a Versionamento de Código
-#*Sistemas de Controle de Versão*
+# *Sistemas de Controle de Versão*
 Controlam as versões de um arquivo ao longo do desenvolvimento da aplicação:
 - Registra o histórioco de atualizações de um arquivo
 - Gerencia  quais foram as Alterações, data, autor e etc.
@@ -25,9 +25,9 @@ local, podendo ser feita quando conveniente.
 -Leve e rápido
 
 # *Anotações de configuração*
---global: Configurações para o usuário atual, aplicadas a todos os repositórios do usuário.
---local: Configurações para o repositório atual, aplicadas apenas a esse repositório específico.
---system: Configurações para todo o sistema, aplicadas a todos os usuários e repositórios no sistema.
+- global: Configurações para o usuário atual, aplicadas a todos os repositórios do usuário.
+- local: Configurações para o repositório atual, aplicadas apenas a esse repositório específico.
+- system: Configurações para todo o sistema, aplicadas a todos os usuários e repositórios no sistema.
 
 # Gerar token no github, e a senha será o token: 
 git config --global credential.helper "cache" ou "storage"
