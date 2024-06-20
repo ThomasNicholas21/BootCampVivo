@@ -66,4 +66,17 @@ git commit -m "descricao"  - adiciona o commit juntamente a uma descricao
 git restore "nome do arquivo"
 ```
 
+# Alterar mensagem do último commit:
+```
+git log         - verifica histórico do último commit
+git commit --ammend -m "nova mensagem"
+```
 
+# Desfazer último commit:
+```
+git log
+git reset --soft "id commit"  - Adiciona os arquivos na área de preparacao
+git reset --mixed "id commit" - Remove da área de preparacao 
+git reset --hard "id commit"  - Remove tudo
+git reflog                    
+```
