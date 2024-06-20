@@ -45,20 +45,20 @@ git config --global user.name "nome-github"
 git config user.name 
 git config --global user.email emailutilizado
 git config user.email 
-git config init.defaultBranch - indica qual o nome da branch padrão
+git config init.defaultBranch               - indica qual o nome da branch padrão
 git config --global init.defaultBranch nome - define o nome da branch padrão
 ```
 
 # Uso
 ```
-git init - inicia um repositório
-rm -rf .git - remove a inicializacao feita para um repositório
-git remote origin "url" - vincula repositório do github
-git clone "url-github" opcional"novo nome"
-git remote -v -mostra os repositórios vinculados
-git status - mostra o status do repositório
-git add - adiciona arquivos ao repositório
-git commit -m "descricao" - adiciona o commit ao  
+git init                   - inicia um repositório
+rm -rf .git                - remove a inicializacao feita para um repositório
+git remote origin "url"    - vincula repositório do github
+git clone "url-github" "novo nome"
+git remote -v              - mostra os repositórios vinculados
+git status                 - mostra o status do repositório
+git add                    - adiciona arquivos ao repositório
+git commit -m "descricao"  - adiciona o commit juntamente a uma descricao 
 ```
 
 # Restaurar arquivos modificados:
