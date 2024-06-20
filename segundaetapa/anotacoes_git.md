@@ -20,9 +20,9 @@ local, podendo ser feita quando conveniente.
 - Complexidade de sincronização.
 
 # *GIT*
--Open source
--Permite ramificações e fusões eficientes
--Leve e rápido
+- Open source
+- Permite ramificações e fusões eficientes
+- Leve e rápido
 
 # *Anotações de configuração*
 - global: Configurações para o usuário atual, aplicadas a todos os repositórios do usuário.
