@@ -80,3 +80,36 @@ git reset --mixed "id commit" - Remove da área de preparacao
 git reset --hard "id commit"  - Remove tudo
 git reflog                    
 ```
+
+# Enviar commits e receber alterações
+```
+git push -u origin main
+git pull
+```
+
+## *Branches*
+- Uma ramificação do projeto
+- Um pónteiro móvel para um commit no histórico do repositório
+- Um branch criada a partir de outra Branch, aponta o mesmo commit da Branch inicial
+
+# Criar branche
+```
+git checkout -b teste            - cria e altera para branch criada
+git checkout "nome da branche"   - altera para branch
+```
+
+# Listar branches
+```
+git branch -v
+git branch
+``` 
+
+# Mesclar Branches
+```
+git merge teste    - Junta a branch criada com a branch principal
+```
+
+# Excluindo Branches
+```
+git branch -d teste  - exclui a brach especificada
+```
