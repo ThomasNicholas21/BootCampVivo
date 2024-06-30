@@ -42,6 +42,8 @@ while opcao != 0:
         for chave in cadastro:
             print(chave, sep='\n')
         print()
+    else:
+        print('Opção invalida.')
 else:
     print('Obrigado!')
 
