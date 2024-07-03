@@ -12,6 +12,7 @@ limite_saque = 500
 extrato = ""
 saldo = 0
 deposito_cont = 0
+saque_cont = 0 
 
 while True:
     opcoes = input(menu).strip().lower()
@@ -21,6 +22,9 @@ while True:
                 deposito = float(input("Insira a quantidade que será depositada: ")) 
                 if deposito < 1:
                     print("Valor insuficiente, tente novamente.")
+                    voltar_deposito_menu = input("Pressione [V] para voltar e [C] para continuar:").lower().startswith('v')
+                    if voltar_deposito_menu:
+                        break
                 else:
                     deposito_cont += 1
             except ValueError:
@@ -31,20 +35,26 @@ while True:
             extrato += f'Depósito: R${deposito:.2f}\n'
         
     elif opcoes == 's':
-        try:
-            saque = float(input("Informe quanto deseja sacar: "))
-            if saque > 500:
-                print("Valor máximo de saque excedido, tente novamente.")
-            elif saque > saldo:
-                print(f"Saldo insuficiente, não será possível sacar essa quantida.") 
-            elif LIMITE_DIARIO == 0:
-                print("Quantidade de saque diário excedida. Tente amanhã.")
-            else:
-                LIMITE_DIARIO -= 1
-                saldo -= saque
-                extrato += f'Saque: R${saque:.2f}\n'
-        except ValueError:
-            print("Valor inválido.")
+        if quantidade_saque == LIMITE_DIARIO:
+            print("Quantidade de saque diário excedida. Tente amanhã.")
+            continue
+        while saque_cont < 1:
+            try:
+                saque = float(input("Informe quanto deseja sacar: "))
+                if saque > 500:
+                    print("Valor máximo de saque excedido, tente novamente.")
+                elif saque > saldo:
+                    print(f"Saldo insuficiente, deposite e tente novamente.") 
+                    break
+                else:
+                    saque_cont += 1
+            except ValueError:
+                print("Valor inválido.")
+        else:
+            saque_cont = 0 
+            quantidade_saque += 1
+            saldo -= saque
+            extrato += f'Saque: R${saque:.2f}\n'    
 
     elif opcoes == 'e':
         print("\nExtrato atual:")
