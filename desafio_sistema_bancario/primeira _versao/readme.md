@@ -4,7 +4,7 @@ Se trata da primeira versão de um sistema bancário no qual deve-se ter as segu
 - Saque
 - Extrato
 
-# *Requisitos de cada funcionalidade* 📚
+# *Requisitos de cada funcionalidade* 📚 Primeira Versão
 ## *Depósito*:
 - Deve ser possível depositar valores positivos na conta bancária
 - Todos os depósitos devem ser armazenados em uma variável e exibidos na operação de extrato.
