@@ -8,9 +8,5 @@ def recebe_lista(args):
         dic.setdefault(arg, args.count(arg))
     return print(dic)
 
-
-
-        
-
 lista = [1, 1, 'Thomas', 'Thomas', 4 ]
 recebe_lista(lista)
