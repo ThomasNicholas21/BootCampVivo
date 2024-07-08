@@ -6,6 +6,7 @@
 # string.lstrip() - remove o espaço a esquerda
 # string.rstrip() - remove o esparaço a direita
 # string.center() - 2 argumentos sendo o segundo opcional; número de caracter, e com o que vai ser preenchido
+# string.split(sep, maxsplit) - o sep é o criterio de separação e maxsplit o maximo de separação (opcional) 
 # 'item'.join(string) -  junta o item na string
 
 string = ' ThOmAs '
@@ -17,3 +18,5 @@ print(string.lstrip())
 print(string.rstrip())
 print(string.center(10, '!'))
 print('!'.join(string))
+string_texto = ' Thomas joga basquete. '
+print(string_texto.split((" ", ".")))
