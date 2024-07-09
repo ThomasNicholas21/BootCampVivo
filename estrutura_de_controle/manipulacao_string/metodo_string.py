@@ -19,4 +19,4 @@ print(string.rstrip())
 print(string.center(10, '!'))
 print('!'.join(string))
 string_texto = ' Thomas joga basquete. '
-print(string_texto.split((" ", ".")))
+print(string_texto.split(" "))
