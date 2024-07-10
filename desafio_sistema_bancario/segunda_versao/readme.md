@@ -16,7 +16,7 @@ Se trata da primeira versão de um sistema bancário no qual deve-se ter as segu
         - Retornos saldo e extrato
     - ## *Função Extrato*
         - Positional only e keyword only
-        - Argumentos posicionais: saldo e argumentos
+        - Argumentos posicionais: saldo
         - Argumentos nomeados: extrato
 - # Cadastrar Usuário:
     - Armazena os usuários em uma lista
