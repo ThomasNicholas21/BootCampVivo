@@ -1,3 +1,22 @@
+import os as o
+
+def deposito_operacao(saldo, valor, extrato_funcao, /):
+    # retona saldo e extrato
+    ...
+def saque_operacao(*, saldo, valor_extrato, limite_numero_saques):
+    # retorna saldo e extrato
+    ...
+# retorna saldo e extrato
+def extrato(saldo, /,*, extrato=''):
+    extrato_total = f'''   
+- Extrato
+
+{extrato}
+- Saldo Total R$ {saldo:.2f}'''
+    return print(extrato_total)
+    ...
+
+
 menu= '''
 Menu de Opções:
 [d] Depositar
@@ -9,7 +28,7 @@ Selecione:'''
 LIMITE_DIARIO = 3
 quantidade_saque = 0
 limite_saque = 500
-extrato = ""
+extrato_total = ""
 saldo = 0
 deposito_cont = 0
 saque_cont = 0 
@@ -32,7 +51,8 @@ while True:
         else:
             deposito_cont = 0
             saldo += deposito
-            extrato += f'Depósito: R${deposito:.2f}\n'
+            extrato_total += f'Depósito:R${deposito:.2f}\n'
+            o.system("cls")
         
     elif opcoes == 's':
         if quantidade_saque == LIMITE_DIARIO:
@@ -54,12 +74,11 @@ while True:
             saque_cont = 0 
             quantidade_saque += 1
             saldo -= saque
-            extrato += f'Saque: R${saque:.2f}\n'    
+            extrato_total += f'Saque: R${saque:.2f}\n'    
+            o.system("cls")
 
     elif opcoes == 'e':
-        print("\nExtrato atual:")
-        print(extrato)
-        print(f"Saldo atual: R${saldo:.2f}")
+        extrato(saldo, extrato=extrato_total)
 
     elif opcoes == 'q':
         print("Obrigado por utilizar nosso sistema!")
