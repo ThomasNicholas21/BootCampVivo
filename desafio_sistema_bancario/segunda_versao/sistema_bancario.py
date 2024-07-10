@@ -3,16 +3,10 @@ import os as o
 def deposito_operacao(saldo, deposito, extrato_total, /):
     contador_deposito = 0
     while contador_deposito < 1:
-            if deposito == 0:
-                print("❌ Operação Encerada ")
-                break
             try:
-                if deposito < 1:
-                    print("Valor insuficiente, tente novamente.")
-                    voltar_deposito_menu = input("Pressione [V] para voltar e [C] para continuar:").lower().startswith('v')
-                    if voltar_deposito_menu:
-                        print("❌ Deposito não realizado ")
-                        break
+                if deposito == 0:
+                    print("❌ Operação Encerada ")
+                    break
                 else:
                     contador_deposito += 1
             except ValueError:
