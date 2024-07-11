@@ -1,4 +1,14 @@
-import os as o
+def menu():
+    menu= '''
+Menu de Opções:
+[d] Depositar
+[s] Sacar
+[e] Extrato
+[c] Cadastro de Usuário
+[cc] Criar Conta Corrente
+[q] Sair
+Selecione:'''
+    return menu
 
 # Realiza Operação Deposito
 def deposito_operacao(saldo, deposito, extrato_total, /):
@@ -61,18 +71,26 @@ def extrato(saldo, /,*, extrato=''):
 - Saldo Total R$ {saldo:.2f}'''
     return print(extrato_total)
 
-
-def menu():
-    menu= '''
-Menu de Opções:
-[d] Depositar
-[s] Sacar
-[e] Extrato
-[q] Sair
-Selecione:'''
-    return menu
+def cadastro_usuario(lista_usuarios):
+    nome_usuario = input('Digite seu nome:')
+    data_de_nascimento = input('Data de Nascimento:')
+    cpf = input('Digite seu CPF:')
+    print('Cadastre seu Endereço:')
+    logradouro = input('Digite seu logradouro:')
+    numero = input('Digite o número:')
+    bairro = input('Digite seu bairro: ')
+    cidade_estado = input('Digite sua Cidade/Estado(Sigla):')
+    lista_usuarios.append({"Nome":nome_usuario, "Data de Nascimento":data_de_nascimento, 
+                           'CPF': cpf, 'endereço':{'logradouro':logradouro, 'numero': numero, 
+                                                   'bairro': bairro, 'Cidade/Estado': cidade_estado}})
     
+    return lista_usuarios
+
+def criar_conta():
+    ...
+  
 def main():
+    lista_de_usuario = []
     quantidade_saque = 0
     extrato_total = ""
     saldo = 0
@@ -89,6 +107,12 @@ def main():
 
         elif opcoes == 'e':
             extrato(saldo, extrato=extrato_total)
+        
+        elif opcoes == 'c':
+            lista_de_usuario = cadastro_usuario(lista_de_usuario)
+        
+        elif opcoes == 'ccc':
+            print(lista_de_usuario)
 
         elif opcoes == 'q':
             print("Obrigado por utilizar nosso sistema!")
