@@ -1,5 +1,6 @@
 import os as o
 
+
 def deposito_operacao(saldo, deposito, extrato_total, /):
     contador_deposito = 0
     while contador_deposito < 1:
@@ -12,10 +13,7 @@ def deposito_operacao(saldo, deposito, extrato_total, /):
             except ValueError:
                 print("Valor inválido, tente novamente.")           
     else:
-        contador_deposito = 0
-        saldo += deposito
-        extrato_total += f'Depósito:R${deposito:.2f}\n'
-        print("✔ Deposito Realizado ")
+        contador_deposito, saldo, extrato_total = operacao(0, contador_deposito, saldo, extrato_total)
         return saldo, extrato_total
     
     return  saldo, extrato_total
@@ -32,26 +30,27 @@ def extrato(saldo, /,*, extrato=''):
 - Saldo Total R$ {saldo:.2f}'''
     return print(extrato_total)
     ...
-
-
-menu= '''
+def menu(opcoes):
+    menu= '''
 Menu de Opções:
 [d] Depositar
 [s] Sacar
 [e] Extrato
 [q] Sair
 Selecione:'''
+    opcoes = input(menu.strip().lower())
+    return opcoes
 
 LIMITE_DIARIO = 3
 quantidade_saque = 0
 limite_saque = 500
 extrato_total = ""
 saldo = 0
-
+opcoes = ''
 saque_cont = 0 
 
 while True:
-    opcoes = input(menu).strip().lower()
+    opcoes = menu(opcoes)
     if opcoes == 'd':
         deposito = float(input("Insira a quantidade que será depositada ou digite [0] para voltar: ")) 
         saldo, extrato_total = deposito_operacao(saldo, deposito, extrato_total)
