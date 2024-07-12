@@ -5,7 +5,7 @@ Menu de Opções:
 [s] Sacar
 [e] Extrato
 [c] Cadastro de Usuário
-[cc] Criar Conta Corrente
+[ccc] Criar Conta Corrente
 [q] Sair
 Selecione:'''
     return menu
@@ -71,20 +71,34 @@ def extrato(saldo, /,*, extrato=''):
 - Saldo Total R$ {saldo:.2f}'''
     return print(extrato_total)
 
-def cadastro_usuario(lista_usuarios):
-    nome_usuario = input('Digite seu nome:')
-    data_de_nascimento = input('Data de Nascimento:')
-    cpf = input('Digite seu CPF:')
-    print('Cadastre seu Endereço:')
-    logradouro = input('Digite seu logradouro:')
-    numero = input('Digite o número:')
-    bairro = input('Digite seu bairro: ')
-    cidade_estado = input('Digite sua Cidade/Estado(Sigla):')
-    lista_usuarios.append({"Nome":nome_usuario, "Data de Nascimento":data_de_nascimento, 
-                           'CPF': cpf, 'endereço':{'logradouro':logradouro, 'numero': numero, 
-                                                   'bairro': bairro, 'Cidade/Estado': cidade_estado}})
+def valida_cpf(cpf, lista_de_usuario):
+    for dados in lista_de_usuario:
+        for dado in dados.values():
+            if dado == cpf:
+                return True
+        return False
     
-    return lista_usuarios
+def cadastro_usuario(lista_usuarios):
+    try:
+        cpf = int(input('Digite seu CPF:'))
+        if valida_cpf(cpf, lista_usuarios):
+            print('Erro, usuário já cadastrado')
+            return lista_usuarios
+        else:
+            nome_usuario = input('Digite seu nome:')
+            data_de_nascimento = input('Data de Nascimento:')
+            print('Cadastre seu Endereço:')
+            logradouro = input('Digite seu logradouro:')
+            numero = input('Digite o número:')
+            bairro = input('Digite seu bairro: ')
+            cidade_estado = input('Digite sua Cidade/Estado(Sigla):')
+            lista_usuarios.append({"Nome":nome_usuario, "Data de Nascimento":data_de_nascimento, 
+                                'CPF': cpf, 'endereço':{'logradouro':logradouro, 'numero': numero, 
+                                                        'bairro': bairro, 'Cidade/Estado': cidade_estado}})
+            return lista_usuarios
+
+    except:
+        print('No CPF deve ser digitado apenas números')
 
 def criar_conta():
     ...
