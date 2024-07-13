@@ -75,16 +75,14 @@ def valida_cpf(cpf, lista_de_usuario):
     for dados in lista_de_usuario:
         for dado in dados.values():
             if dado == cpf:
-                return True
-        return False
+                return False
+    return True
     
 def cadastro_usuario(lista_usuarios):
     try:
-        cpf = int(input('Digite seu CPF:'))
+        cpf = input('Digite seu CPF:')
+        print(valida_cpf(cpf, lista_usuarios))
         if valida_cpf(cpf, lista_usuarios):
-            print('Erro, usuário já cadastrado')
-            return lista_usuarios
-        else:
             nome_usuario = input('Digite seu nome:')
             data_de_nascimento = input('Data de Nascimento:')
             print('Cadastre seu Endereço:')
@@ -96,7 +94,9 @@ def cadastro_usuario(lista_usuarios):
                                 'CPF': cpf, 'endereço':{'logradouro':logradouro, 'numero': numero, 
                                                         'bairro': bairro, 'Cidade/Estado': cidade_estado}})
             return lista_usuarios
-
+        else:
+            print('Erro, usuário já cadastrado')
+            return lista_usuarios
     except:
         print('No CPF deve ser digitado apenas números')
 
