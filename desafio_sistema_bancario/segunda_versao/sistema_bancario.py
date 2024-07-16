@@ -6,6 +6,7 @@ Menu de Opções:
 [e] Extrato
 [c] Cadastro de Usuário
 [ccc] Criar Conta Corrente
+[l] Listar usuários
 [q] Sair
 Selecione:'''
     return menu
@@ -71,21 +72,20 @@ def extrato(saldo, /,*, extrato=''):
 - Saldo Total R$ {saldo:.2f}'''
     return print(extrato_total)
 
-def valida_cpf(cpf, lista_de_usuario):
+def verifica_cpf_cadastrado(cpf, lista_de_usuario):
     for dados in lista_de_usuario:
-        for dado in dados.values():
-            if dado == cpf:
-                return False
+        if dados['CPF'] == cpf:
+            return False
     return True
     
+# Realiza Cadastro de Usuário
 def cadastro_usuario(lista_usuarios):
     try:
         cpf = input('Digite seu CPF:')
-        print(valida_cpf(cpf, lista_usuarios))
-        if valida_cpf(cpf, lista_usuarios):
+        if verifica_cpf_cadastrado(cpf, lista_usuarios):
             nome_usuario = input('Digite seu nome:')
             data_de_nascimento = input('Data de Nascimento:')
-            print('Cadastre seu Endereço:')
+            print('**Cadastre seu Endereço**')
             logradouro = input('Digite seu logradouro:')
             numero = input('Digite o número:')
             bairro = input('Digite seu bairro: ')
@@ -100,10 +100,39 @@ def cadastro_usuario(lista_usuarios):
     except:
         print('No CPF deve ser digitado apenas números')
 
-def criar_conta():
-    ...
+def criar_conta(lista_conta_corrente, lista_usuarios):
+    n_conta = 0
+    cpf = input('Digite seu CPF: ')
+    if not verifica_cpf_cadastrado(cpf, lista_usuarios):
+        criar = input('Deseja criar, digite [s] para sim ou [n] para não: ').lower().startswith('s')
+        if criar:
+            n_conta += 1
+            lista_conta_corrente.append({'Agência': '0001', 'Número da Conta': n_conta, 'cpf': cpf})
+            return lista_conta_corrente
+    else:
+        print('Nao estou aqui')
+
+def print_dic(**kwargs):
+    for chave, valor in kwargs.items():
+        print(f'{chave}: {valor}')
+    
+def lista_usuario(lista_de_usuario):
+    lista = {}
+    cpf = input('Digite o CPF do usuário: ')
+    print('Realizando consulta...')
+    if not verifica_cpf_cadastrado(cpf, lista_de_usuario):
+        for valores in lista_de_usuario:
+            if valores['CPF'] == cpf: 
+                for chave, valor in valores.items():
+                    lista.setdefault(chave, valor)
+                    
+        return print_dic(**lista)
+        
+    return print('Usuário não encontrado!')
+
   
 def main():
+    lista_de_conta_corrente = []
     lista_de_usuario = []
     quantidade_saque = 0
     extrato_total = ""
@@ -126,7 +155,11 @@ def main():
             lista_de_usuario = cadastro_usuario(lista_de_usuario)
         
         elif opcoes == 'ccc':
-            print(lista_de_usuario)
+            lista_de_conta_corrente = criar_conta(lista_de_conta_corrente, lista_de_usuario)
+        
+        elif opcoes == 'l':
+            lista_usuario(lista_de_usuario)
+            print(lista_de_conta_corrente)
 
         elif opcoes == 'q':
             print("Obrigado por utilizar nosso sistema!")
