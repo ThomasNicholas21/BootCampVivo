@@ -101,14 +101,13 @@ def cadastro_usuario(lista_usuarios):
         print('No CPF deve ser digitado apenas números')
 
 def criar_conta(lista_conta_corrente, lista_usuarios):
-    n_conta = 0
+    n_conta = 1
     cpf = input('Digite seu CPF: ')
     if not verifica_cpf_cadastrado(cpf, lista_usuarios):
         criar = input('Deseja criar, digite [s] para sim ou [n] para não: ').lower().startswith('s')
         if criar:
-            n_conta += 1
-            lista_conta_corrente.append({'Agência': '0001', 'Número da Conta': n_conta, 'cpf': cpf})
-            return lista_conta_corrente
+            ...
+                        
     else:
         print('Nao estou aqui')
 
