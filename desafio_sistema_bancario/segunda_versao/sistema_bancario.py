@@ -15,17 +15,16 @@ Selecione:'''
 # Realiza Operação Deposito
 def deposito_operacao(saldo, deposito, extrato_total, /):
     contador_deposito = 0   
-    while contador_deposito < 1:
+    while contador_deposito < 1:  # Inicia a operação deposito
             try:
-                if deposito == 0:
+                if deposito == 0: # Encerra a operação caso o usuário digite 0
                     print("❌ Operação Encerada ")
                     break
-                else:
-                    contador_deposito += 1
+                else:   # Finaliza a repetição caso o usuário deseje realiar um depósito
+                    contador_deposito += 1 
             except ValueError:
                 print("Valor inválido, tente novamente.")           
-    else:
-        contador_deposito = 0
+    else: # Realiza a operação para inserção do depósito 
         saldo += deposito
         extrato_total += f'Depósito:R${deposito:.2f}\n'
         print("✔ Deposito Realizado ")
