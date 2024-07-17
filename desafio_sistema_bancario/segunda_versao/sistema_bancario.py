@@ -129,11 +129,11 @@ def lista_contas(lista_contas):
         for conta in contas:
             print_dic(**conta, sep='\n')
     
-def verifica_cpf_cadastrado(cpf, lista_de_dados):
+def verifica_cpf_cadastrado(cpf, lista_de_dados): # Valida se o CPF está cadastrado
     for dados in lista_de_dados:
         if dados['CPF'] == cpf:
-            return False
-    return True
+            return True
+    return False
 
 def print_dic(**kwargs):
     print('DADOS DO USUÁRIO:')
