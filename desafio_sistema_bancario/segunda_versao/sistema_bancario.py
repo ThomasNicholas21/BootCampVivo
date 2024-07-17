@@ -6,7 +6,8 @@ Menu de Opções:
 [e] Extrato
 [c] Cadastro de Usuário
 [ccc] Criar Conta Corrente
-[l] Listar usuários
+[lu] Listar usuários
+[lc] Listar usuários
 [q] Sair
 Selecione:'''
     return menu
@@ -107,34 +108,41 @@ def criar_conta(lista_conta_corrente, lista_usuarios):
             print('✔ Conta Criada com sucesso')
             return lista_conta_corrente
         else:
-            print('Cancelando criação de conta ...')          
+            print('Cancelando criação de conta ...')  
+            return lista_conta_corrente        
     else:
         print('Este CPF é inválido')
+        return lista_conta_corrente
     
-def lista_usuario(lista_de_usuario):
+def lista_usuarios(lista_de_dados):
     lista = {}
     cpf = input('Digite o CPF do usuário: ')
     print('Realizando consulta...')
-    if not verifica_cpf_cadastrado(cpf, lista_de_usuario):
-        for valores in lista_de_usuario:
+    if not verifica_cpf_cadastrado(cpf, lista_de_dados):
+        for valores in lista_de_dados:
             if valores['CPF'] == cpf: 
                 for chave, valor in valores.items():
-                    lista.setdefault(chave, valor)
-                    
+                    lista.setdefault(chave, valor)   
         return print_dic(**lista)
-        
     return print('Usuário não encontrado!')
 
-def lista_conta(lista_conta_corrente):
-    ...
-
-def verifica_cpf_cadastrado(cpf, lista_de_usuario):
-    for dados in lista_de_usuario:
+def lista_contas(lista_contas):
+    lista = {}
+    cpf = input('Digite o CPF do usuário: ')
+    print('Realizando consulta...')
+    if not verifica_cpf_cadastrado(cpf, lista_contas):
+        contas = [conta for conta in lista_contas if conta['CPF'] == cpf]
+        for conta in contas:
+            print_dic(**conta, sep='\n')
+    
+def verifica_cpf_cadastrado(cpf, lista_de_dados):
+    for dados in lista_de_dados:
         if dados['CPF'] == cpf:
             return False
     return True
 
 def print_dic(**kwargs):
+    print('DADOS DO USUÁRIO:')
     for chave, valor in kwargs.items():
         print(f'{chave}: {valor}')
  
@@ -164,9 +172,11 @@ def main():
         elif opcoes == 'ccc':
             lista_de_conta_corrente = criar_conta(lista_de_conta_corrente, lista_de_usuario)
         
-        elif opcoes == 'l':
-            lista_usuario(lista_de_usuario)
-            print(lista_de_conta_corrente)
+        elif opcoes == 'lu':
+            lista_usuarios(lista_de_usuario)
+        
+        elif opcoes == 'lc':
+            lista_contas(lista_de_conta_corrente)
 
         elif opcoes == 'q':
             print("Obrigado por utilizar nosso sistema!")
