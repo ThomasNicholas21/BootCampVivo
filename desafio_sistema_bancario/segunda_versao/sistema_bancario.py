@@ -1,3 +1,5 @@
+import re
+
 def menu():
     menu= '''
 Menu de Opções:
@@ -69,9 +71,9 @@ def extrato(saldo, /,*, extrato=''):
 
 # Realiza Cadastro de Usuário
 def cadastro_usuario(lista_usuarios):
-    try:
-        cpf = input('Digite seu CPF:')
-        if verifica_cpf_cadastrado(cpf, lista_usuarios):
+    cpf = input('Digite seu CPF:')
+    if not verifica_letras_operadores(cpf): # Se não tiver letra e operadores inicia o cadastro
+        if not verifica_cpf_cadastrado(cpf, lista_usuarios): # Verifica se o usuário não está cadastrado
             nome_usuario = input('Digite seu nome:')
             data_de_nascimento = input('Data de Nascimento:')
             print('**Cadastre seu Endereço**')
@@ -81,13 +83,13 @@ def cadastro_usuario(lista_usuarios):
             cidade_estado = input('Digite sua Cidade/Estado(Sigla):')
             lista_usuarios.append({"Nome":nome_usuario, "Data de Nascimento":data_de_nascimento, 
                                 'CPF': cpf, 'endereço':{'logradouro':logradouro, 'numero': numero, 
-                                                        'bairro': bairro, 'Cidade/Estado': cidade_estado}})
+                                                        'bairro': bairro, 'Cidade/Estado': cidade_estado}}) # Realiza a inserção de dados do cliente na lista de usuários
             print('✔ Usuário cadastrado com sucesso')
             return lista_usuarios
-        else:
+        else: # Caso o usuário já esteja cadastrado
             print('Erro, usuário já cadastrado')
             return lista_usuarios
-    except:
+    else:
         print('No CPF deve ser digitado apenas números')
 
 def criar_conta(lista_conta_corrente, lista_usuarios):
@@ -128,6 +130,10 @@ def lista_contas(lista_contas):
         contas = [conta for conta in lista_contas if conta['CPF'] == cpf]
         for conta in contas:
             print_dic(**conta, sep='\n')
+
+def verifica_letras_operadores(cpf):
+    validacao = r"[a-zA-Z+\-*/]"
+    return bool(re.search(validacao, cpf))
     
 def verifica_cpf_cadastrado(cpf, lista_de_dados): # Valida se o CPF está cadastrado
     for dados in lista_de_dados:
