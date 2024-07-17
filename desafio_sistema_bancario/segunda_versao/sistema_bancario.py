@@ -72,12 +72,6 @@ def extrato(saldo, /,*, extrato=''):
 - Saldo Total R$ {saldo:.2f}'''
     return print(extrato_total)
 
-def verifica_cpf_cadastrado(cpf, lista_de_usuario):
-    for dados in lista_de_usuario:
-        if dados['CPF'] == cpf:
-            return False
-    return True
-    
 # Realiza Cadastro de Usuário
 def cadastro_usuario(lista_usuarios):
     try:
@@ -93,6 +87,7 @@ def cadastro_usuario(lista_usuarios):
             lista_usuarios.append({"Nome":nome_usuario, "Data de Nascimento":data_de_nascimento, 
                                 'CPF': cpf, 'endereço':{'logradouro':logradouro, 'numero': numero, 
                                                         'bairro': bairro, 'Cidade/Estado': cidade_estado}})
+            print('✔ Usuário cadastrado com sucesso')
             return lista_usuarios
         else:
             print('Erro, usuário já cadastrado')
@@ -101,19 +96,20 @@ def cadastro_usuario(lista_usuarios):
         print('No CPF deve ser digitado apenas números')
 
 def criar_conta(lista_conta_corrente, lista_usuarios):
-    n_conta = 1
     cpf = input('Digite seu CPF: ')
     if not verifica_cpf_cadastrado(cpf, lista_usuarios):
         criar = input('Deseja criar, digite [s] para sim ou [n] para não: ').lower().startswith('s')
         if criar:
-            ...
-                        
+            print('Criando conta...')
+            contas = [conta for conta in lista_conta_corrente if conta['CPF'] == cpf]
+            n_conta = len(contas) + 1
+            lista_conta_corrente.append({'Agência': '0001', 'Número da Conta': n_conta, 'CPF': cpf})
+            print('✔ Conta Criada com sucesso')
+            return lista_conta_corrente
+        else:
+            print('Cancelando criação de conta ...')          
     else:
-        print('Nao estou aqui')
-
-def print_dic(**kwargs):
-    for chave, valor in kwargs.items():
-        print(f'{chave}: {valor}')
+        print('Este CPF é inválido')
     
 def lista_usuario(lista_de_usuario):
     lista = {}
@@ -129,7 +125,19 @@ def lista_usuario(lista_de_usuario):
         
     return print('Usuário não encontrado!')
 
-  
+def lista_conta(lista_conta_corrente):
+    ...
+
+def verifica_cpf_cadastrado(cpf, lista_de_usuario):
+    for dados in lista_de_usuario:
+        if dados['CPF'] == cpf:
+            return False
+    return True
+
+def print_dic(**kwargs):
+    for chave, valor in kwargs.items():
+        print(f'{chave}: {valor}')
+ 
 def main():
     lista_de_conta_corrente = []
     lista_de_usuario = []
