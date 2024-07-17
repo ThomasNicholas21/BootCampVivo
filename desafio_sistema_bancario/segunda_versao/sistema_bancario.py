@@ -33,31 +33,26 @@ def deposito_operacao(saldo, deposito, extrato_total, /):
     return  saldo, extrato_total
 
 # Realiza a Operação Saque
-def saque_operacao(*, saldo, extrato_total, quantidade_saque): 
+def saque_operacao(*, saldo, extrato_total): 
     saque_cont = 0
-    while saque_cont < 1:
-            if quantidade_saque >= 3:
-                print("Quantidade de saque diário excedida. Tente amanhã.")
-                return  saldo, extrato_total
-            try:
+    while saque_cont < 1: # Inicia a operação Saque
+            try: 
                 saque = float(input("Informe quanto deseja sacar ou digite [0] para voltar: "))
-                if saque == 0:
+                if saque == 0: # Regras de saque
                     print("❌ Operação Encerada ")
                     break
-                elif saque > 500:
+                elif saque > 500: # Regras de saque
                     print("Valor máximo de saque excedido, tente novamente.")
-                elif saque > saldo:
+                elif saque > saldo: # Regras de saque
                     print(f"Saldo insuficiente, deposite e tente novamente.") 
                     break
-                else:
+                else: # Caso siga todas as regras sai da repetição
                     saque_cont += 1
-            except ValueError:
+            except ValueError: # Verifica se o usuário está inserindo outro valor além de número
                 print("Valor inválido.")
-    else:
-        saque_cont = 0 
+    else: # Realiza a operação Saque
         saldo -= saque
         extrato_total += f'Saque: R${saque:.2f}\n' 
-        quantidade_saque += 1
         print("✔ Saque Realizado ")
         return  saldo, extrato_total
     
@@ -160,7 +155,11 @@ def main():
             saldo, extrato_total = deposito_operacao(saldo, deposito, extrato_total)
             
         elif opcoes == 's':
-            saldo, extrato_total = saque_operacao(saldo=saldo, extrato_total=extrato_total, quantidade_saque=quantidade_saque)
+            if quantidade_saque >= 3: # Caso o usuário tenha realizado 3 vezes, a operação é bloqueda
+                print("Quantidade de saque diário excedida. Tente amanhã.")
+            else:
+                saldo, extrato_total = saque_operacao(saldo=saldo, extrato_total=extrato_total)
+                quantidade_saque += 1
 
         elif opcoes == 'e':
             extrato(saldo, extrato=extrato_total)
