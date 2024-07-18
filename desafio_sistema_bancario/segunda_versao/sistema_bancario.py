@@ -168,38 +168,38 @@ def main():
     opcoes = ''
 
     while True:
-        opcoes = input(menu()).lower().strip()
-        if opcoes == 'd':
+        opcoes = input(menu()).lower().strip() # Chama a função menu para o usuário selecionar qual a opção desejada
+        if opcoes == 'd': # Caso o usuário deseje depositar
             deposito = float(input("Insira a quantidade que será depositada ou digite [0] para voltar: ")) 
             saldo, extrato_total = deposito_operacao(saldo, deposito, extrato_total)
             
-        elif opcoes == 's':
+        elif opcoes == 's': # Caso o usuário deseje sacar
             if quantidade_saque >= 3: # Caso o usuário tenha realizado 3 vezes, a operação é bloqueda
                 print("Quantidade de saque diário excedida. Tente amanhã.")
             else:
                 saldo, extrato_total = saque_operacao(saldo=saldo, extrato_total=extrato_total)
                 quantidade_saque += 1
 
-        elif opcoes == 'e':
+        elif opcoes == 'e': # Caso o usuário deseje visualizar o extrato
             extrato(saldo, extrato=extrato_total)
         
-        elif opcoes == 'c':
+        elif opcoes == 'c': # Caso o usuário deseje cadastrar um usuário
             lista_de_usuario = cadastro_usuario(lista_de_usuario)
         
-        elif opcoes == 'ccc':
+        elif opcoes == 'ccc': # Caso o usuário deseje criar um contato corrente
             lista_de_conta_corrente = criar_conta(lista_de_conta_corrente, lista_de_usuario)
         
-        elif opcoes == 'lu':
+        elif opcoes == 'lu': # Caso o usuário deseje listar os dados de um usuário especifico
             lista_usuarios(lista_de_usuario)
         
-        elif opcoes == 'lc':
+        elif opcoes == 'lc': # Caso o usuário deseje listar contas especificas
             lista_contas(lista_de_conta_corrente)
 
-        elif opcoes == 'q':
+        elif opcoes == 'q': # Caso o usuário deseje encerrar o programa
             print("Obrigado por utilizar nosso sistema!")
             break
 
-        else:
+        else: # Caso o usuário erre o menu
             print("Opção inválida! Por gentileza, selecione uma das opções"
                 "do menu.")
                    
