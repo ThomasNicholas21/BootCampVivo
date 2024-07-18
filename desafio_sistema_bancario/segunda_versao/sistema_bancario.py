@@ -154,7 +154,7 @@ def verifica_cpf_cadastrado(cpf, lista_de_dados): # Valida se o CPF está cadast
             return True
     return False
 
-def print_dic(**kwargs):
+def print_dic(**kwargs): # Imprimi os dados do dicionário
     print('DADOS DO USUÁRIO:')
     for chave, valor in kwargs.items():
         print(f'{chave}: {valor}')
