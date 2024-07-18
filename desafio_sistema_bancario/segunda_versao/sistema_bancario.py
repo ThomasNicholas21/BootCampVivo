@@ -144,9 +144,9 @@ def lista_contas(lista_contas):
     else:
         return print('O CPF deve conter apenas números!')
 
-def verifica_letras_operadores(cpf):
+def verifica_letras_operadores(cpf): # Função de validação de operadores e letra
     validacao = r"[a-zA-Z+\-*/]"
-    return bool(re.search(validacao, cpf))
+    return bool(re.search(validacao, cpf)) # Retorna True se letras e operadores estiverem presentes
     
 def verifica_cpf_cadastrado(cpf, lista_de_dados): # Valida se o CPF está cadastrado
     for dados in lista_de_dados:
