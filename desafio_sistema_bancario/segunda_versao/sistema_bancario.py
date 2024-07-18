@@ -130,15 +130,19 @@ def lista_usuarios(lista_de_dados):
     else:
         return print('O CPF deve conter apenas números!')
 
+# Lista contas
 def lista_contas(lista_contas):
     lista = {}
     cpf = input('Digite o CPF do usuário: ')
-    if verifica_letras_operadores(cpf):
-        print('Realizando consulta...')
-        if not verifica_cpf_cadastrado(cpf, lista_contas):
-            contas = [conta for conta in lista_contas if conta['CPF'] == cpf]
-            for conta in contas:
-                print_dic(**conta, sep='\n')
+    if not verifica_letras_operadores(cpf):
+        if verifica_letras_operadores(cpf): # Verifica se o usuário existe
+            print('Realizando consulta...')
+            if not verifica_cpf_cadastrado(cpf, lista_contas):
+                contas = [conta for conta in lista_contas if conta['CPF'] == cpf] # Verifica todas as contas do usuário
+                for conta in contas:
+                    print_dic(**conta, sep='\n')
+    else:
+        return print('O CPF deve conter apenas números!')
 
 def verifica_letras_operadores(cpf):
     validacao = r"[a-zA-Z+\-*/]"
