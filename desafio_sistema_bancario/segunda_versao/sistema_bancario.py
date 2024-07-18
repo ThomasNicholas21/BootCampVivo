@@ -94,42 +94,51 @@ def cadastro_usuario(lista_usuarios):
 
 def criar_conta(lista_conta_corrente, lista_usuarios):
     cpf = input('Digite seu CPF: ')
-    if not verifica_cpf_cadastrado(cpf, lista_usuarios):
-        criar = input('Deseja criar, digite [s] para sim ou [n] para não: ').lower().startswith('s')
-        if criar:
-            print('Criando conta...')
-            contas = [conta for conta in lista_conta_corrente if conta['CPF'] == cpf]
-            n_conta = len(contas) + 1
-            lista_conta_corrente.append({'Agência': '0001', 'Número da Conta': n_conta, 'CPF': cpf})
-            print('✔ Conta Criada com sucesso')
-            return lista_conta_corrente
+    if not verifica_letras_operadores(cpf):
+        if verifica_cpf_cadastrado(cpf, lista_usuarios): # Verifica se tem usuários cadastrados
+            criar = input('Deseja criar um conta, digite [s] para sim ou qualquer tecla para não: ').lower().startswith('s')
+            if criar: # Inicia o processo de criação dascontas
+                print('Criando conta...')
+                contas = [conta for conta in lista_conta_corrente if conta['CPF'] == cpf] # Cria um nova lista que tem todas as contas criadas em um CPF
+                n_conta = len(contas) + 1 # Faz a contagem de contas do usuário para que não haja números repetidos
+                lista_conta_corrente.append({'Agênci-a': '0001', 'Número da Conta': n_conta, 'CPF': cpf}) # Inseri as informações da conta do usuário
+                print('✔ Conta Criada com sucesso')
+                return lista_conta_corrente
+            else:
+                print('Cancelando criação de conta ...')  
+                return lista_conta_corrente        
         else:
-            print('Cancelando criação de conta ...')  
-            return lista_conta_corrente        
+            print('Este CPF é inválido')
+            return lista_conta_corrente
     else:
-        print('Este CPF é inválido')
+        print('O CPF deve conter apenas números!')
         return lista_conta_corrente
     
+# Lista o usuários cadastrados
 def lista_usuarios(lista_de_dados):
     lista = {}
     cpf = input('Digite o CPF do usuário: ')
-    print('Realizando consulta...')
-    if not verifica_cpf_cadastrado(cpf, lista_de_dados):
-        for valores in lista_de_dados:
-            if valores['CPF'] == cpf: 
-                for chave, valor in valores.items():
-                    lista.setdefault(chave, valor)   
-        return print_dic(**lista)
-    return print('Usuário não encontrado!')
+    if not verifica_letras_operadores(cpf): 
+        print('Realizando consulta...')
+        if verifica_cpf_cadastrado(cpf, lista_de_dados): # Verifica se o usuário está cadastrado
+            for valores in lista_de_dados: 
+                if valores['CPF'] == cpf:  # Procura pelo usuário
+                    for chave, valor in valores.items(): # Inseri em um dicionário
+                        lista.setdefault(chave, valor)   
+            return print_dic(**lista)
+        return print('Usuário não encontrado!')
+    else:
+        return print('O CPF deve conter apenas números!')
 
 def lista_contas(lista_contas):
     lista = {}
     cpf = input('Digite o CPF do usuário: ')
-    print('Realizando consulta...')
-    if not verifica_cpf_cadastrado(cpf, lista_contas):
-        contas = [conta for conta in lista_contas if conta['CPF'] == cpf]
-        for conta in contas:
-            print_dic(**conta, sep='\n')
+    if verifica_letras_operadores(cpf):
+        print('Realizando consulta...')
+        if not verifica_cpf_cadastrado(cpf, lista_contas):
+            contas = [conta for conta in lista_contas if conta['CPF'] == cpf]
+            for conta in contas:
+                print_dic(**conta, sep='\n')
 
 def verifica_letras_operadores(cpf):
     validacao = r"[a-zA-Z+\-*/]"
