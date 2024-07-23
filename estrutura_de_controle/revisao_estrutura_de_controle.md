@@ -478,6 +478,126 @@
             ```
     - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/interpolacao_variaveis.py)
 
-- ### Metodos para String
-    - 
+- ## Métodos para String
+    - **`string.upper()`**: Converte todos os caracteres para maiúsculo.
+        ```python
+        texto = "python"
+        print(texto.upper())
+        # Saída: PYTHON
+        ```
 
+    - **`string.lower()`**: Converte todos os caracteres para minúsculo.
+        ```python
+        texto = "PYTHON"
+        print(texto.lower())
+        # Saída: python
+        ```
+
+    - **`string.title()`**: Converte o primeiro caractere de cada palavra para maiúsculo e o restante para minúsculo.
+        ```python
+        texto = "programação em python"
+        print(texto.title())
+        # Saída: Programação Em Python
+        ```
+
+    - **`string.strip()`**: Remove espaços em branco no início e no fim da string.
+        ```python
+        texto = "  python  "
+        print(texto.strip())
+        # Saída: python
+        ```
+
+    - **`string.lstrip()`**: Remove espaços em branco à esquerda da string.
+        ```python
+        texto = "  python"
+        print(texto.lstrip())
+        # Saída: python
+        ```
+
+    - **`string.rstrip()`**: Remove espaços em branco à direita da string.
+        ```python
+        texto = "python  "
+        print(texto.rstrip())
+        # Saída: python
+        ```
+
+    - **`string.center()`**: Alinha a string no centro, preenchendo com o caractere especificado até atingir o comprimento total desejado.
+        ```python
+        texto = "python"
+        print(texto.center(10))
+        # Saída: '  python  '
+        print(texto.center(10, '-'))
+        # Saída: --python--
+        ```
+
+    - **`string.split(sep, maxsplit)`**: Divide a string em uma lista com base no separador especificado. O `maxsplit` é opcional e define o número máximo de divisões.
+        ```python
+        texto = "python é divertido"
+        print(texto.split())
+        # Saída: ['python', 'é', 'divertido']
+        print(texto.split(' ', 1))
+        # Saída: ['python', 'é divertido']
+        ```
+
+    - **`'item'.join(string)`**: Junta os caracteres da string com o item especificado.
+        ```python
+        texto = "python"
+        print('-'.join(texto))
+        # Saída: p-y-t-h-o-n
+        ```
+
+    - **`string.replace(old, new, count)`**: Substitui todas as ocorrências da substring `old` por `new`. O argumento `count` é opcional e limita o número de substituições.
+        ```python
+        texto = "python é divertido"
+        print(texto.replace("python", "programação"))
+        # Saída: programação é divertido
+        ```
+
+    - **`string.startswith(prefix)`**: Verifica se a string começa com o prefixo especificado.
+        ```python
+        texto = "python é divertido"
+        print(texto.startswith("python"))
+        # Saída: True
+        ```
+
+    - **`string.endswith(suffix)`**: Verifica se a string termina com o sufixo especificado.
+        ```python
+        texto = "python é divertido"
+        print(texto.endswith("divertido"))
+        # Saída: True
+        ```
+
+    - **`string.find(sub)`**: Retorna o índice da primeira ocorrência da substring `sub`. Retorna -1 se a substring não for encontrada.
+        ```python
+        texto = "python é divertido"
+        print(texto.find("divertido"))
+        # Saída: 12
+        ```
+
+    - **`string.count(sub)`**: Conta quantas vezes a substring `sub` aparece na string.
+        ```python
+        texto = "python é divertido, python é fácil"
+        print(texto.count("python"))
+        # Saída: 2
+        ```
+
+    - **`string.zfill(width)`**: Preenche a string com zeros à esquerda até atingir o comprimento especificado.
+        ```python
+        texto = "42"
+        print(texto.zfill(5))
+        # Saída: 00042
+        ```
+
+    - **`string.isdigit()`**: Verifica se todos os caracteres na string são dígitos.
+        ```python
+        texto = "12345"
+        print(texto.isdigit())
+        # Saída: True
+        ```
+
+    - **`string.isalpha()`**: Verifica se todos os caracteres na string são letras.
+        ```python
+        texto = "python"
+        print(texto.isalpha())
+        # Saída: True
+        ```
