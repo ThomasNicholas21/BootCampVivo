@@ -601,3 +601,4 @@
         print(texto.isalpha())
         # Saída: True
         ```
+    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/metodo_string.py)
