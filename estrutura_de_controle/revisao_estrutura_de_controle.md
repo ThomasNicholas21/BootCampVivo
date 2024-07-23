@@ -167,7 +167,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     ```python
     print(a is not c)  # True
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
+    - **`Observação`**: Mais exemplos de Operadores de identificação ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
 
 - ### Operadores Aritiméticos
     - **`+`**: Soma.
@@ -198,7 +198,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     ```python
     print(2 ** 3)  # 8
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
+    - **`Observação`**: Mais exemplos de Operadores Aritiméticos ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
 - ### Operadores de Associação
     - **`in`**: Verifica se um valor está presente em uma sequência.
     ```python
@@ -208,7 +208,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     ```python
     print('x' not in 'banana')  # True
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_associcao.py)
+    - **`Observação`**: Mais exemplos de Operadores de Associação ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_associcao.py)
 - ### Operadores de Atribuição
     - **`=`**: Atribuição de valor.
     ```python
@@ -242,7 +242,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     ```python
     x **= 3  # x agora é 1.0
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_atribuicao.py)
+    - **`Observação`**: Mais exemplos de Operadores de Atribuição ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_atribuicao.py)
 - ### Operadores de Comparação
     - **`==`**: Igualdade.
     ```python
@@ -268,7 +268,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     ```python
     print(3 <= 3)  # True
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_comparacao.py)
+    - **`Observação`**: Mais exemplos de Operadores de Comparação ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_comparacao.py)
 - ### Operadores Lógicos
     - **`and`**: Retorna `True` se ambas as expressões forem verdadeiras.
     ```python
@@ -282,7 +282,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     ```python
     print(not True)  # False
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_logicos.py)
+    - **`Observação`**: Mais exemplos de Operadores Lógicos ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_logicos.py)
 ## Estrutura Condicional
 - **`if`**: Executa um bloco de código se a condição for verdadeira.
     ```python
@@ -329,7 +329,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
         print(resultado)  # Saída: Maior que 5
         ```
 
-- **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_condicionais.py)
+- **`Observação`**: Mais exemplos de Estrutura Condicional ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_condicionais.py)
 ## Estrutura de Repetição
 - ### `for` e `for-else`
     - **`for`**: Utilizado para iterar sobre uma sequência (como uma lista, tupla ou string).
@@ -407,7 +407,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
     - **`continue`**: Útil para pular a iteração atual e continuar com a próxima, geralmente usado para ignorar certos casos dentro de um loop.
     - **`pass`**: Útil como um placeholder quando a sintaxe exige um comando, mas você não quer executar nenhuma ação no momento.
 
-- **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_repeticao.py)
+- **`Observação`**: Mais exemplos de Estrutura de Repetição ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_repeticao.py)
 
 ## Manipulação de String
 - ## Fatiamento de String
@@ -422,7 +422,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
         print(texto[::2])    # Saída: Hlo ol!
         print(texto[::-1])   # Saída: !dlroW ,olleH
         ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/fatiamento_strings.py)
+    - **`Obersavação`**: Mais exemplos de Fatiamento de String ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/fatiamento_strings.py)
 - ## Interpolação de Variáveis
     - `%` - Versão Antiga
         - Utiliza o operador `%` para inserir variáveis dentro de strings.
@@ -476,7 +476,7 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
             print(f"Nome: {nome}, Idade: {idade}")
             # Saída: Nome: Frank, Idade: 40
             ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/interpolacao_variaveis.py)
+    - **`Observação`**: Mais exemplos de Interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/interpolacao_variaveis.py)
 
 - ## Métodos para String
     - **`string.upper()`**: Converte todos os caracteres para maiúsculo.
@@ -601,4 +601,4 @@ Manter o código limpo e legível é essencial para facilitar a manutenção, au
         print(texto.isalpha())
         # Saída: True
         ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/metodo_string.py)
+    - **`Observação`**: Mais exemplos de Métodos para String ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/metodo_string.py)
