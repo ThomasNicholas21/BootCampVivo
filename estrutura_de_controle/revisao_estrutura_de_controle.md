@@ -17,7 +17,7 @@
     Manter o código limpo e legível é essencial para facilitar a manutenção, aumentar a produtividade e reduzir erros. Aqui estão algumas dicas importantes para escrever clean code em Python:
 
     - ### Dicas de Clean Code
-        - 1. **Use Nomes Descritivos**: Variáveis, funções e classes devem ter nomes claros e descritivos.
+        - **Use Nomes Descritivos**: Variáveis, funções e classes devem ter nomes claros e descritivos.
             ```python
             # Bom
             def calcular_media(lista_de_numeros):
@@ -28,7 +28,7 @@
                 # ...
             ```
 
-        - 2. **Evite Comentários Desnecessários**: Comente apenas o necessário. O código deve ser autoexplicativo sempre que possível.
+        - **Evite Comentários Desnecessários**: Comente apenas o necessário. O código deve ser autoexplicativo sempre que possível.
             ```python
             # Bom
             def verificar_se_eh_par(numero):
@@ -40,7 +40,7 @@
                 return numero % 2 == 0
             ```
 
-        - 3. **Mantenha Funções e Métodos Curtos**: Funções e métodos devem fazer apenas uma coisa e fazê-la bem. Idealmente, não devem ter mais de 20 linhas.
+        - **Mantenha Funções e Métodos Curtos**: Funções e métodos devem fazer apenas uma coisa e fazê-la bem. Idealmente, não devem ter mais de 20 linhas.
             ```python
             # Bom
             def obter_dados_usuario():
@@ -54,7 +54,7 @@
                 # ...
             ```
 
-        - 4. **Use Espaços em Branco para Melhorar a Legibilidade**: Utilize linhas em branco para separar blocos de código e melhorar a leitura.
+        - **Use Espaços em Branco para Melhorar a Legibilidade**: Utilize linhas em branco para separar blocos de código e melhorar a leitura.
             ```python
             # Bom
             def funcao_exemplo():
@@ -73,7 +73,7 @@
                 return valor
             ```
 
-        - 5. **Consistência na Indentação**: Use 4 espaços por nível de indentação. Não misture espaços e tabulações.
+        - **Consistência na Indentação**: Use 4 espaços por nível de indentação. Não misture espaços e tabulações.
             ```python
             # Bom
             for i in range(10):
@@ -84,7 +84,7 @@
             print(i)
             ```
 
-        - 6. **Evite Códigos Duplicados**: Se você se pegar copiando e colando código, considere refatorar para uma função ou método.
+        - **Evite Códigos Duplicados**: Se você se pegar copiando e colando código, considere refatorar para uma função ou método.
             ```python
             # Bom
             def calcular_area_retangulo(largura, altura):
@@ -98,7 +98,7 @@
             area2 = 15 * 30
             ```
 
-        - 7. **Seja Explícito**: Prefira ser explícito ao invés de implícito. Código explícito é mais fácil de entender e menos propenso a erros.
+        - **Seja Explícito**: Prefira ser explícito ao invés de implícito. Código explícito é mais fácil de entender e menos propenso a erros.
             ```python
             # Bom
             def verificar_maioridade(idade):
@@ -112,7 +112,7 @@
                 return idade >= 18
             ```
 
-        - 8. **Trate Exceções de Forma Apropriada**: Sempre lide com exceções, mas faça isso de forma que o código continue sendo legível e compreensível.
+        - **Trate Exceções de Forma Apropriada**: Sempre lide com exceções, mas faça isso de forma que o código continue sendo legível e compreensível.
             ```python
             # Bom
             try:
@@ -127,7 +127,7 @@
                 pass
             ```
 
-        - 9. **Utilize List Comprehensions**: São uma maneira concisa e eficiente de criar listas.
+        - **Utilize List Comprehensions**: São uma maneira concisa e eficiente de criar listas.
             ```python
             # Bom
             quadrados = [x**2 for x in range(10)]
@@ -138,7 +138,7 @@
                 quadrados.append(x**2)
             ```
 
-        - 10. **Documente seu Código**: Use docstrings para documentar funções, classes e módulos.
+        - **Documente seu Código**: Use docstrings para documentar funções, classes e módulos.
             ```python
             def funcao_exemplo(parametro):
                 """
