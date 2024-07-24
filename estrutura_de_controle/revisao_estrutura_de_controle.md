@@ -11,148 +11,7 @@
         if i % 2 == 0:
             print(f"{i} é par")
     ```
-
-- ## Clean Code Python
-    - ### Importância de Clean Code
-    Manter o código limpo e legível é essencial para facilitar a manutenção, aumentar a produtividade e reduzir erros. Aqui estão algumas dicas importantes para escrever clean code em Python:
-
-    - ### Dicas de Clean Code
-        - 1. **Use Nomes Descritivos**: Variáveis, funções e classes devem ter nomes claros e descritivos.
-            ```python
-            # Bom
-            def calcular_media(lista_de_numeros):
-                # ...
-            
-            # Ruim
-            def calc(lst):
-                # ...
-            ```
-
-        - 2. **Evite Comentários Desnecessários**: Comente apenas o necessário. O código deve ser autoexplicativo sempre que possível.
-            ```python
-            # Bom
-            def verificar_se_eh_par(numero):
-                return numero % 2 == 0
-            
-            # Ruim
-            def verificar_se_eh_par(numero):
-                # Verifica se o número é par
-                return numero % 2 == 0
-            ```
-
-        - 3. **Mantenha Funções e Métodos Curtos**: Funções e métodos devem fazer apenas uma coisa e fazê-la bem. Idealmente, não devem ter mais de 20 linhas.
-            ```python
-            # Bom
-            def obter_dados_usuario():
-                # ...
-            
-            def validar_dados_usuario():
-                # ...
-            
-            # Ruim
-            def obter_e_validar_dados_usuario():
-                # ...
-            ```
-
-        - 4. **Use Espaços em Branco para Melhorar a Legibilidade**: Utilize linhas em branco para separar blocos de código e melhorar a leitura.
-            ```python
-            # Bom
-            def funcao_exemplo():
-                valor = calcular_valor()
-                
-                if valor > 0:
-                    processar_valor(valor)
-                
-                return valor
-            
-            # Ruim
-            def funcao_exemplo():
-                valor = calcular_valor()
-                if valor > 0:
-                    processar_valor(valor)
-                return valor
-            ```
-
-        - 5. **Consistência na Indentação**: Use 4 espaços por nível de indentação. Não misture espaços e tabulações.
-            ```python
-            # Bom
-            for i in range(10):
-                print(i)
-                
-            # Ruim
-            for i in range(10):
-            print(i)
-            ```
-
-        - 6. **Evite Códigos Duplicados**: Se você se pegar copiando e colando código, considere refatorar para uma função ou método.
-            ```python
-            # Bom
-            def calcular_area_retangulo(largura, altura):
-                return largura * altura
-            
-            area1 = calcular_area_retangulo(10, 20)
-            area2 = calcular_area_retangulo(15, 30)
-            
-            # Ruim
-            area1 = 10 * 20
-            area2 = 15 * 30
-            ```
-
-        - 7. **Seja Explícito**: Prefira ser explícito ao invés de implícito. Código explícito é mais fácil de entender e menos propenso a erros.
-            ```python
-            # Bom
-            def verificar_maioridade(idade):
-                if idade >= 18:
-                    return True
-                else:
-                    return False
-            
-            # Ruim
-            def verificar_maioridade(idade):
-                return idade >= 18
-            ```
-
-        - 8. **Trate Exceções de Forma Apropriada**: Sempre lide com exceções, mas faça isso de forma que o código continue sendo legível e compreensível.
-            ```python
-            # Bom
-            try:
-                resultado = operacao_critica()
-            except ErroEsperado as e:
-                tratar_erro(e)
-            
-            # Ruim
-            try:
-                resultado = operacao_critica()
-            except:
-                pass
-            ```
-
-        - 9. **Utilize List Comprehensions**: São uma maneira concisa e eficiente de criar listas.
-            ```python
-            # Bom
-            quadrados = [x**2 for x in range(10)]
-            
-            # Ruim
-            quadrados = []
-            for x in range(10):
-                quadrados.append(x**2)
-            ```
-
-        - 10. **Documente seu Código**: Use docstrings para documentar funções, classes e módulos.
-            ```python
-            def funcao_exemplo(parametro):
-                """
-                Esta função faz algo muito importante.
-                
-                Args:
-                    parametro (tipo): Descrição do parâmetro.
-                
-                Returns:
-                    tipo: Descrição do retorno.
-                """
-                # ...
-            ```
-
+    
 ## Operadores
 - ### Operadores de identificação
     - **`is`**: Verifica se duas variáveis apontam para o mesmo objeto na memória.
@@ -167,7 +26,7 @@
     ```python
     print(a is not c)  # True
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
+    - **`Observação`**: Mais exemplos de Operadores de identificação ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
 
 - ### Operadores Aritiméticos
     - **`+`**: Soma.
@@ -198,7 +57,7 @@
     ```python
     print(2 ** 3)  # 8
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
+    - **`Observação`**: Mais exemplos de Operadores Aritiméticos ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/oepradores_identidadae.py)
 - ### Operadores de Associação
     - **`in`**: Verifica se um valor está presente em uma sequência.
     ```python
@@ -208,7 +67,7 @@
     ```python
     print('x' not in 'banana')  # True
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_associcao.py)
+    - **`Observação`**: Mais exemplos de Operadores de Associação ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_associcao.py)
 - ### Operadores de Atribuição
     - **`=`**: Atribuição de valor.
     ```python
@@ -242,7 +101,7 @@
     ```python
     x **= 3  # x agora é 1.0
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_atribuicao.py)
+    - **`Observação`**: Mais exemplos de Operadores de Atribuição ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_atribuicao.py)
 - ### Operadores de Comparação
     - **`==`**: Igualdade.
     ```python
@@ -268,7 +127,7 @@
     ```python
     print(3 <= 3)  # True
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_comparacao.py)
+    - **`Observação`**: Mais exemplos de Operadores de Comparação ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_comparacao.py)
 - ### Operadores Lógicos
     - **`and`**: Retorna `True` se ambas as expressões forem verdadeiras.
     ```python
@@ -282,7 +141,7 @@
     ```python
     print(not True)  # False
     ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_logicos.py)
+    - **`Observação`**: Mais exemplos de Operadores Lógicos ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/operadores/operadores_logicos.py)
 ## Estrutura Condicional
 - **`if`**: Executa um bloco de código se a condição for verdadeira.
     ```python
@@ -329,7 +188,7 @@
         print(resultado)  # Saída: Maior que 5
         ```
 
-- **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_condicionais.py)
+- **`Observação`**: Mais exemplos de Estrutura Condicional ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_condicionais.py)
 ## Estrutura de Repetição
 - ### `for` e `for-else`
     - **`for`**: Utilizado para iterar sobre uma sequência (como uma lista, tupla ou string).
@@ -407,7 +266,7 @@
     - **`continue`**: Útil para pular a iteração atual e continuar com a próxima, geralmente usado para ignorar certos casos dentro de um loop.
     - **`pass`**: Útil como um placeholder quando a sintaxe exige um comando, mas você não quer executar nenhuma ação no momento.
 
-- **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_repeticao.py)
+- **`Observação`**: Mais exemplos de Estrutura de Repetição ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/condicional_repeticao/estrutura_repeticao.py)
 
 ## Manipulação de String
 - ## Fatiamento de String
@@ -422,7 +281,7 @@
         print(texto[::2])    # Saída: Hlo ol!
         print(texto[::-1])   # Saída: !dlroW ,olleH
         ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/fatiamento_strings.py)
+    - **`Obersavação`**: Mais exemplos de Fatiamento de String ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/fatiamento_strings.py)
 - ## Interpolação de Variáveis
     - `%` - Versão Antiga
         - Utiliza o operador `%` para inserir variáveis dentro de strings.
@@ -476,7 +335,7 @@
             print(f"Nome: {nome}, Idade: {idade}")
             # Saída: Nome: Frank, Idade: 40
             ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/interpolacao_variaveis.py)
+    - **`Observação`**: Mais exemplos de Interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/interpolacao_variaveis.py)
 
 - ## Métodos para String
     - **`string.upper()`**: Converte todos os caracteres para maiúsculo.
@@ -601,4 +460,146 @@
         print(texto.isalpha())
         # Saída: True
         ```
-    - **`Obersavação`**: Mais exemplos de interpolação de Variáveis ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/metodo_string.py)
+    - **`Observação`**: Mais exemplos de Métodos para String ["clique aqui""](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/estrutura_de_controle/manipulacao_string/metodo_string.py)
+
+## Clean Code Python
+- ### Importância de Clean Code
+Manter o código limpo e legível é essencial para facilitar a manutenção, aumentar a produtividade e reduzir erros. Aqui estão algumas dicas importantes para escrever clean code em Python:
+
+- ### Dicas de Clean Code
+    - **Use Nomes Descritivos**: Variáveis, funções e classes devem ter nomes claros e descritivos.
+        ```python
+        # Bom
+        def calcular_media(lista_de_numeros):
+            # ...
+        
+        # Ruim
+        def calc(lst):
+            # ...
+        ```
+
+    - **Evite Comentários Desnecessários**: Comente apenas o necessário. O código deve ser autoexplicativo sempre que possível.
+        ```python
+        # Bom
+        def verificar_se_eh_par(numero):
+            return numero % 2 == 0
+        
+        # Ruim
+        def verificar_se_eh_par(numero):
+            # Verifica se o número é par
+            return numero % 2 == 0
+        ```
+
+    - **Mantenha Funções e Métodos Curtos**: Funções e métodos devem fazer apenas uma coisa e fazê-la bem. Idealmente, não devem ter mais de 20 linhas.
+        ```python
+        # Bom
+        def obter_dados_usuario():
+            # ...
+        
+        def validar_dados_usuario():
+            # ...
+        
+        # Ruim
+        def obter_e_validar_dados_usuario():
+            # ...
+        ```
+
+    - **Use Espaços em Branco para Melhorar a Legibilidade**: Utilize linhas em branco para separar blocos de código e melhorar a leitura.
+        ```python
+        # Bom
+        def funcao_exemplo():
+            valor = calcular_valor()
+            
+            if valor > 0:
+                processar_valor(valor)
+            
+            return valor
+        
+        # Ruim
+        def funcao_exemplo():
+            valor = calcular_valor()
+            if valor > 0:
+                processar_valor(valor)
+            return valor
+        ```
+
+    - **Consistência na Indentação**: Use 4 espaços por nível de indentação. Não misture espaços e tabulações.
+        ```python
+        # Bom
+        for i in range(10):
+            print(i)
+            
+        # Ruim
+        for i in range(10):
+        print(i)
+        ```
+
+    - **Evite Códigos Duplicados**: Se você se pegar copiando e colando código, considere refatorar para uma função ou método.
+        ```python
+        # Bom
+        def calcular_area_retangulo(largura, altura):
+            return largura * altura
+        
+        area1 = calcular_area_retangulo(10, 20)
+        area2 = calcular_area_retangulo(15, 30)
+        
+        # Ruim
+        area1 = 10 * 20
+        area2 = 15 * 30
+        ```
+
+    - **Seja Explícito**: Prefira ser explícito ao invés de implícito. Código explícito é mais fácil de entender e menos propenso a erros.
+        ```python
+        # Bom
+        def verificar_maioridade(idade):
+            if idade >= 18:
+                return True
+            else:
+                return False
+        
+        # Ruim
+        def verificar_maioridade(idade):
+            return idade >= 18
+        ```
+
+    - **Trate Exceções de Forma Apropriada**: Sempre lide com exceções, mas faça isso de forma que o código continue sendo legível e compreensível.
+        ```python
+        # Bom
+        try:
+            resultado = operacao_critica()
+        except ErroEsperado as e:
+            tratar_erro(e)
+        
+        # Ruim
+        try:
+            resultado = operacao_critica()
+        except:
+            pass
+        ```
+
+    - **Utilize List Comprehensions**: São uma maneira concisa e eficiente de criar listas.
+        ```python
+        # Bom
+        quadrados = [x**2 for x in range(10)]
+        
+        # Ruim
+        quadrados = []
+        for x in range(10):
+            quadrados.append(x**2)
+        ```
+
+    - **Documente seu Código**: Use docstrings para documentar funções, classes e módulos.
+        ```python
+        def funcao_exemplo(parametro):
+            """
+            Esta função faz algo muito importante.
+            
+            Args:
+                parametro (tipo): Descrição do parâmetro.
+            
+            Returns:
+                tipo: Descrição do retorno.
+            """
+            # ...
+        ```
+
