@@ -15,4 +15,4 @@ calc = Calculadora()
 resultado = calc.somar(3, 4)
 print(resultado)  # 7
 ```
-- [Mais exemplos](https://github.com/ThomasNicholas21/BootCampVivo/blob/master/poo/classes_objetos/classes_objetos1.py)
+- [Mais exemplos](https://github.com/ThomasNicholas21/BootCampVivo/tree/master/poo/classes_objetos)
