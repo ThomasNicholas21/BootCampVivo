@@ -17,6 +17,9 @@ class Bicicleta: # Definindo Classe
     def __str__(self): # Retorna uma string que represente o objeto
         return f'Características: {self.cor}, {self.modelo}, {self.ano} e {self.valor}'
 
+    def __str__(self): # Retorna a string que representa o objeto juntamente o nome da classe (self.__class__.__name__)
+        return f'{self.__class__.__name__}: {[', '.join(f'{chave} = {valor}'for chave, valor in self.__dict__.items())]}'
+    
 # Instanciando objeto
 bike1 = Bicicleta('Azul', 'BMX', 2004, 1400)
 bike1.buzinar()
