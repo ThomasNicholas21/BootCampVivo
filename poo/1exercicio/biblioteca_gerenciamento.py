@@ -1,7 +1,7 @@
 # Atividade: Sistema de Gerenciamento de Biblioteca
 # Objetivo: Criar um sistema simples para gerenciar uma biblioteca, utilizando classes, objetos, métodos construtores e destrutores.
 # Descrição: Você irá criar três classes principais: Livro, Usuario, e Biblioteca.
-# 1. Classe Livro
+
 # Atributos: titulo (string) autor (string) ano_publicacao (int) disponivel (boolean, inicializado como True)
 class Livro: # Construtor que inicializa todos os atributos do livro.
     def __init__(self, titulo, autor, ano_publicacao, disponivel=True):
@@ -10,37 +10,59 @@ class Livro: # Construtor que inicializa todos os atributos do livro.
         self.ano_publicacao = int(ano_publicacao)
         self.disponivel = bool(disponivel)
 
-# Métodos:
 # Método para marcar o livro como emprestado (disponivel se torna False).
-def emprestar_livro(self):
-    self.disponivel = False
-    return self.disponivel
+    def livro_emprestado(self):
+        self.disponivel = False
+        return self.disponivel
 
 # Método para marcar o livro como devolvido (disponivel se torna True).
-def devolver_livro(self):
-    self.disponivel = True
-    return self.disponivel
+    def livro_disponivel(self):
+        self.disponivel = True
+        return self.disponivel
 
 # Método destrutor que imprime uma mensagem quando um objeto Livro é destruído.
-def __del__(self):
-    print('Excluindo Livro.')
+    def __del__(self):
+        print(f'{self.titulo} está sendo excluido.')
 
-# 2. Classe Usuario
 # Atributos: nome (string) livros_emprestados (lista de objetos Livro, inicializada como uma lista vazia)
-# Métodos:
-# Construtor que inicializa o nome do usuário.
+class Usuario: # Construtor que inicializa o nome do usuário.
+    def __init__(self, nome, livros_emprestados=[]):
+        self.nome = str(nome)
+        self.livros_emprestados = list(livros_emprestados)
+
 # Método para emprestar um livro (adiciona o livro à lista livros_emprestados e marca o livro como emprestado).
+    def emprestar_livro(self, livros_emprestados):
+        ...
 # Método para devolver um livro (remove o livro da lista livros_emprestados e marca o livro como disponível).
+    def receber_livro(self, livros_emprestados):
+        ...
 # Método destrutor que imprime uma mensagem quando um objeto Usuario é destruído.
+    def __del__(self):
+        print(f'{self.nome}: Usuário destruidos.')
+    
 # 3. Classe Biblioteca
 # Atributos: livros (lista de objetos Livro, inicializada como uma lista vazia) usuarios (lista de objetos Usuario, inicializada como uma lista vazia)
-# Métodos:
-# Construtor que inicializa as listas de livros e usuários.
+class Biblioteca: # Construtor que inicializa as listas de livros e usuários.
+    def __init__(self, livros=[], usuarios=[]):
+        self.livros = livros
+        self.usuarios = usuarios
+
 # Método para adicionar um livro à biblioteca.
+    def adiciona_livro(self, livros):
+        ...
 # Método para adicionar um usuário à biblioteca.
+    def adicionar_usuario(self, usuarios):
+        ...
 # Método para listar todos os livros disponíveis.
+    def lista_livros(self, livros):
+        ...
 # Método para listar todos os usuários cadastrados.
+    def lista_usuarios(self, usuarios):
+        ...
 # Método destrutor que imprime uma mensagem quando um objeto Biblioteca é destruído.
+    def __del__(self):
+        print('Objeto destruido.')
+
 # Tarefas:
 # Implemente as três classes descritas acima.
 # Crie alguns objetos Livro e Usuario para testar seu sistema.
