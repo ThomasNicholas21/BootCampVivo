@@ -25,22 +25,25 @@ class Livro: # Construtor que inicializa todos os atributos do livro.
         print(f'{self.titulo} está sendo excluido.')
 
 # Atributos: nome (string) livros_emprestados (lista de objetos Livro, inicializada como uma lista vazia)
-class Usuario: # Construtor que inicializa o nome do usuário.
+class Usuario(Livro): # Construtor que inicializa o nome do usuário.
     def __init__(self, nome, livros_emprestados=[]):
         self.nome = str(nome)
         self.livros_emprestados = list(livros_emprestados)
 
 # Método para emprestar um livro (adiciona o livro à lista livros_emprestados e marca o livro como emprestado).
     def emprestar_livro(self, livros_emprestados):
-        ...
+        emprestimo = self.livro_emprestado()
+        livros_emprestados.append(emprestimo)
+
 # Método para devolver um livro (remove o livro da lista livros_emprestados e marca o livro como disponível).
     def receber_livro(self, livros_emprestados):
-        ...
+        emprestimo = self.livro_disponivel()
+        livros_emprestados.remove(emprestimo)
+
 # Método destrutor que imprime uma mensagem quando um objeto Usuario é destruído.
     def __del__(self):
         print(f'{self.nome}: Usuário destruidos.')
     
-# 3. Classe Biblioteca
 # Atributos: livros (lista de objetos Livro, inicializada como uma lista vazia) usuarios (lista de objetos Usuario, inicializada como uma lista vazia)
 class Biblioteca: # Construtor que inicializa as listas de livros e usuários.
     def __init__(self, livros=[], usuarios=[]):
