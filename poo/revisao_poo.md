@@ -42,7 +42,7 @@ print(resultado)  # 7
             print(f'{self.nome} foi criado.')
 
         def __del__(self):
-            print(f'{self.nome} está sendo destruído.')
+            print(f'{self.nome} está sendo destruído.')git s
 
     # Criando uma instância da classe Pessoa
     pessoa1 = Pessoa("João", 30)
@@ -58,3 +58,4 @@ print(resultado)  # 7
 - **Vatangens:**
     - Faz a reutilização do código, para que não seja necessário repetir. Além disso, permite adicionar mais recursos a uma classe sem modificá-la.
     - É transitiva, caso uma classe B herde da classe A, todas as sublcasses de B heradarão de forma automatica da classe A, ou seja, caso a classe B tenha como filha a classe C, essa classe será neta da classe A herdando suas caractéristicas.
+        - **Obs:** Sempre verificar a complexidade da herança das classe, pois caso a fámilia seja grande, uma pequena alteração irá refletir em toda a familia.
