@@ -20,6 +20,7 @@ class moto(veiculo):
         super().__init__(cor, placa, num_roda)
 
     def travar_guidao(self):
+        print('Guidão Travado')
 
 class carro(veiculo):
     def __init__(self, modelo, marca, cor, placa, num_roda):
