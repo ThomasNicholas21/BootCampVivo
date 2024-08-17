@@ -3,16 +3,17 @@
 # Descrição: Você irá criar três classes principais: Livro, Usuario, e Biblioteca.
 
 class Livro: # Construtor que inicializa todos os atributos do livro.
-    def __init__(self, titulo, autor, ano_publicacao, disponivel=True):
+    def __init__(self, titulo, autor, ano_publicacao):
         self.titulo = str(titulo)
         self.autor = str(autor)
         self.ano_publicacao = int(ano_publicacao)
-        self.disponivel = bool(disponivel)
+        self.disponivel = True
 
     def livro_emprestado(self):
-        if self.disponivel == False:
-            return f'Livro {self.titulo} Está sendo utilizado.'
-        return f'Livro {self.titulo} Disponivel.'
+        if self.disponivel:
+            self.disponivel = False
+        else:
+            print(f'Livro {self.titulo} Disponivel.')
 
     def livro_disponivel(self):
         if self.disponivel == True:
@@ -25,14 +26,14 @@ class Livro: # Construtor que inicializa todos os atributos do livro.
     def __del__(self): # O mesmo não é necessário, pois o python possui um coletor de lixo
         pass
 
-class Usuario(Livro): # Construtor que inicializa o nome do usuário.
-    def __init__(self, nome, livros_emprestados=[]):
+class Usuario: # Construtor que inicializa o nome do usuário.
+    def __init__(self, nome):
         self.nome = str(nome)
-        self.livros_emprestados = list(livros_emprestados)
+        self.livros_emprestados = []
 
-    def emprestar_livro(self, livros_emprestados):
-        emprestimo = self.livro_emprestado()
-        livros_emprestados.append(emprestimo)
+    def emprestar_livro(self, livros):
+        if livros.disponivel:
+            livros.livro_emprestado()
 
     def receber_livro(self, livros_emprestados):
         emprestimo = self.livro_disponivel()
@@ -41,7 +42,7 @@ class Usuario(Livro): # Construtor que inicializa o nome do usuário.
     def __del__(self):
         print(f'{self.nome}: Usuário destruidos.')
     
-class Biblioteca(Livro, Usuario): 
+class Biblioteca: 
     def __init__(self, livros=[], usuarios=[]):
         self.livros = livros
         self.usuarios = usuarios
