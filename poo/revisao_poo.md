@@ -93,7 +93,7 @@ class C(A, B): # Herda caractéristicas da classe A e B
                 self._saldo = saldo_inicial # Atributo Protegido
         ```
     - **Atributos privados:** Acessíveis apenas dentro da classe (Indicado por "__")
-        - **Dois "__":** Este indica que o atributo passará por um processo chamado **Name Mangling** tornando o mesmo privado, pois ele dificulta o acesso fora da classe. O mesmo deixa o atributo diferente do que ele foi declarado de forma intencional. **Exemplo**
+        - **Dois "__":** Este indica que o atributo passará por um processo chamado **Name Mangling** tornando o mesmo privado, pois ele dificulta o acesso fora da classe. O mesmo deixa o atributo diferente do que ele foi declarado de forma intencional. Porém ainda é possível aceessa-lo. **Exemplo**
         ``` Python
         class conta_bancaria:
             def __init__(self, titular, saldo_inicial):
