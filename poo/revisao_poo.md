@@ -5,7 +5,7 @@ Paradigma de programação é um estilo de programação de como solucionar prob
 - **```Classes```**
     - É o que define as características e comportamentos de um objeto, porém não é possível utilizar diretamente, ou seja, é algo abstrato.
 - **```Objetos```**
-    - O objeto instanciado por uma classe pode utilizar as características e comportamentos que foram definidos na clase.
+    - O objeto instanciado por uma classe pode utilizar as características e comportamentos que foram definidos na classe.
 
 Exemplo:
 ```python
@@ -77,3 +77,31 @@ class B:
 class C(A, B): # Herda caractéristicas da classe A e B
     pass
 ```
+
+## Encapsulamento
+- **O que é?**
+    - É a ideia de agrupar dados, impondo métodos que manipulam os dados. Impondo restrições diretos a variáveis e métodos, evitando a modificação de dados, pódendo apenas ser modificada pelo método do dado. Garantindo a manipulação de dados de forma consistente e segura.
+- **Como funciona?**
+    - **Atributos públicos:** Acessíveis de qualquer lugar.
+    - **Atributos protegidos:** Acessíveis dentro de classes e subclasses (Indicado por "_")
+        - **Um "_":** Isso indica uma convenção, sinalizando que o metodo indicado é protegido e deve ser tratado como detalhe interno.
+        ### **Exemplo:**
+        ```python
+        class conta_bancaria:
+            def __init__(self, titular, saldo_inicial):
+                self.titular = titular # Atributo público
+                self._saldo = saldo_inicial # Atributo Protegido
+        ```
+    - **Atributos privados:** Acessíveis apenas dentro da classe (Indicado por "__")
+        - **Dois "__":** Este indica que o atributo passará por um processo chamado **Name Mangling** tornando o mesmo privado, pois ele dificulta o acesso fora da classe. O mesmo deixa o atributo diferente do que ele foi declarado de forma intencional. **Exemplo**
+        ``` Python
+        class conta_bancaria:
+            def __init__(self, titular, saldo_inicial):
+                self.titular = titular # Atributo público
+                self.__saldo = saldo_inicial # Atributo Privado
+            
+            def obter_saldo(self):
+                return self.__saldo 
+        ```
+
+
