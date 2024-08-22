@@ -103,5 +103,6 @@ class C(A, B): # Herda caractéristicas da classe A e B
             def obter_saldo(self):
                 return self.__saldo 
         ```
+    - **property():** possibilita criar atributos que são gerenciados em suas classes, podendo usar atributos gerenciados e também conhecidos como propriedade. Quando Precisar modificar sua implantacão interna sem alterar a API pública da classe.
 
 
