@@ -104,5 +104,62 @@ class C(A, B): # Herda caractéristicas da classe A e B
                 return self.__saldo 
         ```
     - **property():** possibilita criar atributos que são gerenciados em suas classes, podendo usar atributos gerenciados e também conhecidos como propriedade. Quando Precisar modificar sua implantacão interna sem alterar a API pública da classe.
+        - **Getter:** método utilizado para obter um valor de um atributo privado ou protegido de uma classe, em Python chamamos a função decoradora property() para realizar a ação.
+            ```Python
+            class Pessoa:
+                def __init__(self, nome):
+                    self._nome = nome  # Atributo protegido
+
+                @property
+                def nome(self):        # Metodo utilizado para obter o valor
+                    return self._nome
+
+                nome1 = 'Fulano'
+                print(nome1.nome)      # Possibilita verificar o nome
+            ```
+        - **Setter:** O mesmo é utilizado para atribuir um valor a um atributo protegido ou privado.
+        ```python
+        class Pessoa:
+            def __init__(self, nome):
+                self._nome = nome
+
+            @property
+            def nome(self):
+                return self._nome
+
+            @nome.setter            # Chamando o método setter para atribuir o nome
+            def nome(self, novo_nome):
+                self._nome = novo_nome
+
+        nome1 = 'Fulano'
+        print(nome1.nome) 
+        nome1.nome = 'Ciclano'  # Atribuindo nome
+        ```
+
+        nome1.nome = 'Ciclano'
+        - **Deleter:** método utilizado para deletar um atributo.
+        ```python
+        class Pessoa:
+            def __init__(self, nome):
+                self._nome = nome
+
+            @property
+            def nome(self):
+                return self._nome
+
+            @nome.setter
+            def nome(self, novo_nome):
+                self._nome = novo_nome
+
+            @nome.deleter
+            def nome(self):
+                del self._nome
+
+
+        nome1 = 'Fulano'
+        print(nome1.nome) 
+        nome1.nome = 'Ciclano' 
+        del nome1.nome
+        ```
 
 
