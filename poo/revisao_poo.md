@@ -203,3 +203,27 @@ class C(A, B): # Herda caractéristicas da classe A e B
     fazer_animal_falar(vaca)
 
     ```
+
+# Váriaveis de Instância e de Classes
+- **Varáveis de Instância:**
+    - Esses são diferentes para cada objeto, ou seja, possuem valores diferentes para cada cópia de objeto. **Exemplo:**
+    ```Python
+    class Pessoa:
+        def __init__(self, nome, idade):
+            self.nome = nome             # Variáveis de instância
+            self. idade = idade
+    
+    pessoa1 = Pessoa('Fulano', 21)       # Muda para cada objeto instanciado
+    pessoa2 = Pessoa('Ciclano', 22)
+    ```
+- **Variáveis de Classe:**
+    - Atributos de classe são compartilhados em todos os objetos, ou seja, este atributo será compartilhado por todo objeto instanciado da classe. **Exemplo:**
+    ```Python
+    class Pessoa:
+        sobrenome = 'Lano' # Atributo compartilhado entre os objetos instanciados dessa classe.
+
+        def __init__(self, nome, idade):
+            self.nome = nome
+            self.idade = idade
+        
+    ```
