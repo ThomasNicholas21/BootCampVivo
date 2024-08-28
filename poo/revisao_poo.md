@@ -246,7 +246,7 @@ class C(A, B): # Herda caractéristicas da classe A e B
                 self.saldo = saldo
 
             @classmethod
-            def alterar_taxa_juros(cls, nova_taxa):
+            def alterar_taxa_juros(cls, nova_taxa): # CLS referencia a classe
                 cls.taxa_de_juros = nova_taxa
 
             def calcula_taxa_juros(self):
