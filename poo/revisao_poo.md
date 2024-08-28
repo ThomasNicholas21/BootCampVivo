@@ -227,3 +227,46 @@ class C(A, B): # Herda caractéristicas da classe A e B
             self.idade = idade
         
     ```
+
+# Métodos de classe e Métodos Estáticos
+- ## Métodos de Classe
+    - **O que são?**
+        - Este método está apontado para classe e não para o objeto, ou seja, eles têm acesso ao estado da classe. Podendo ser chamado tanto de classe quanto de instâncias da classe, tradicionalmente conhecidos como **cls**.
+    - **Quando Usar?**
+        - Usado para motificar o estado da classe como um todo, e não a instância especifica, assim sendo, são úteis quando o comportamento do método deve ser compartilhado as instâncias de classe.
+    - **Como usar?**
+        - Para definir se utiliza '@classmethod', e a convenção utilizada para definir o primeiro parametro é 'cls'.
+    - **Exemplo**
+        ```Python
+        class conta_bancaria:
+            taxa_de_juros = 0,02  # Váriavel de classe
+
+            def __init__(self, titular, saldo):
+                self.titular = titular
+                self.saldo = saldo
+
+            @classmethod
+            def alterar_taxa_juros(cls, nova_taxa):
+                cls.taxa_de_juros = nova_taxa
+
+            def calcula_taxa_juros(self):
+                return self.saldo * self.taxa_de_juros
+
+        conta_bancaria.alterar_taxa_juros(0.08) # Utilizando método de classe
+        ``` 
+- ## Método estático
+    - **O que são?**
+        - Este método não estão vinculados nem à instância e nem á classe, sendo eles como funções normais, porém estão presentes na classe por fazer sentido. Os mesmos não operam sobre a instância 'self' e 'cls'.
+    - **Quando Usar?**
+        - É utilizado quando a função faz parte da lógica da classe, mas sem precisar modificar o estado da classe ou da instância, sendo úteis como funções auxiliares que estão logicamente relacionados a classe.
+    - **Como usar?**
+        - Para definir utiliza-se o decorador '@staticmethod', sem precisar utilizar nenhum parâmetro obrigatório.
+    - **Exemplo**
+        ```Python
+        class Calc:
+            @staticmethod
+            def somar(a, b)
+                return a + b
+
+        resultado_soma = Calc.somar # Utilizando método de Estático
+        ``` 
