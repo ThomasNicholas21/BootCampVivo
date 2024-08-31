@@ -1,22 +1,51 @@
 from abc import ABC, abstractmethod
 
 class Cliente:
-    pass
+    def __init__(self, endereco, contas=[]):
+        self.endereco = str(endereco)
+        self.contas = contas
+
+    def realizar_transacao(self):
+        pass
+
+    def adicionar_conta(self):
+        pass
 
 class PessoaFisica(Cliente):
-    pass
+    def __init__(self, cpf, nome, data_nascimento, endereco, contas=[]):
+        self.cpf = cpf
+        self.nome = nome
+        self.data_nascimento = data_nascimento
+        super().__init__(endereco, contas)
 
 class Conta:
-    pass
+    def __init__(self, saldo, numero, agencia):
+        self.saldo = saldo
+        self.numero = numero
+        self.agencia = agencia
+        self.cliente = Cliente
+        self.historico = Historico
 
+    def saldo():
+        pass
+
+    def nova_conta():
+        pass
+
+    def sacar():
+        pass
+
+    def depositar():
+        pass
+    
 class ContaCorrente(Conta):
-    pass
-
-class Historico:
-    pass 
+    def __init__(self, limite, limite_saques, saldo, numero, agencia):
+        self.limite = limite
+        self.limite_saques = limite_saques
+        super().__init__(saldo, numero, agencia)
 
 # Classe Abstrata
-class Transacao:
+class Transacao(ABC):
     pass
 
 class Deposito(Transacao):
@@ -24,6 +53,9 @@ class Deposito(Transacao):
 
 class Saque(Transacao):
     pass
+
+class Historico:
+    pass 
 
 def menu():
     menu= '''
