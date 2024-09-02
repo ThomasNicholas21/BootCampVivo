@@ -6,7 +6,7 @@ class Cliente:
         self.contas = contas
 
     def realizar_transacao(self, conta, transacao):
-        pass
+        transacao.registrar(conta)
 
     def adicionar_conta(self, conta):
         self.contas.append(conta)
@@ -21,28 +21,64 @@ class PessoaFisica(Cliente):
 class Conta:
     def __init__(self, numero, cliente):
         self._saldo = 0
-        self.numero = numero
-        self.agencia = '0001'
-        self.cliente = cliente
-        self.historico = Historico()
+        self._numero = numero
+        self._agencia = '0001'
+        self._cliente = cliente
+        self._historico = Historico()
 
-    def saldo():
-        pass
+    @classmethod
+    def nova_conta(cls, cliente, numero):
+        return cls(numero, cliente)
+    
+    @property
+    def saldo(self):
+        return self._saldo
+    
+    @property
+    def saldo(self):
+        return self._numero
+    
+    @property
+    def agencia(self):
+        return self._agencia
+    
+    @property
+    def cliente(self):
+        return self.cliente
 
-    def nova_conta():
-        pass
+    @property
+    def historico(self):
+        return self._historico
 
-    def sacar():
-        pass
+    def sacar(self, valor):
+        saldo_excedido = valor > self._saldo
+        if saldo_excedido:
+            print('Saldo excedido, operação falhou!')
+        
+        elif  0 < valor < 500:
+            self._saldo -= valor
+            print('Operação concluida, saque efetuado!')
+            return True
+        
+        else:
+            print('Operação desconhecida, valor inválido.')
 
-    def depositar(self, saldo, historico):
-        pass
+        return False
+
+    def depositar(self, valor):
+        if valor > 0:
+            self._saldo += valor
+            print('Deposito realizado, operação concluida!')
+            return True
+        else:
+            print('Operação desconhecida, valor inválido. ')
     
 class ContaCorrente(Conta):
-    def __init__(self, limite, limite_saques, saldo, numero, agencia):
-        self.limite = limite
-        self.limite_saques = limite_saques
-        super().__init__(saldo, numero, agencia)
+    def __init__(self, numero, cliente, limite=500, limite_saques = 3):
+        super().__init__(numero, cliente)
+        self._limite = limite
+        self._limite_saques = limite_saques
+        
 
 # Classe Abstrata
 class Transacao(ABC):
@@ -52,14 +88,36 @@ class Transacao(ABC):
     
     @property
     @abstractmethod
-    def registrar(self):
+    def registrar(self, conta):
         pass
 
 class Deposito(Transacao):
-    pass
+    def __init__(self, valor):
+        self._valor = valor
+
+    @property
+    def valor(self):
+        return self._valor
+    
+    def registrar(self, conta):
+        transacao_efetuada = conta.depositar(self.valor)
+
+        if transacao_efetuada:
+            conta.historico.adicionar_transacao(self)
 
 class Saque(Transacao):
-    pass
+    def __init__(self, valor):
+        self._valor = valor
+
+    @property
+    def valor(self):
+        return self._valor
+    
+    def registrar(self, conta):
+        transacao_efetuada = conta.depositar(self.valor)
+
+        if transacao_efetuada:
+            conta.historico.adicionar_transacao(self)
 
 class Historico:
     def __init__(self, transacoes=[]):
