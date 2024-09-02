@@ -5,11 +5,11 @@ class Cliente:
         self.endereco = str(endereco)
         self.contas = contas
 
-    def realizar_transacao(self):
+    def realizar_transacao(self, conta, transacao):
         pass
 
-    def adicionar_conta(self):
-        pass
+    def adicionar_conta(self, conta):
+        self.contas.append(conta)
 
 class PessoaFisica(Cliente):
     def __init__(self, cpf, nome, data_nascimento, endereco, contas=[]):
@@ -19,12 +19,12 @@ class PessoaFisica(Cliente):
         super().__init__(endereco, contas)
 
 class Conta:
-    def __init__(self, saldo, numero, agencia):
-        self.saldo = saldo
+    def __init__(self, numero, cliente):
+        self._saldo = 0
         self.numero = numero
-        self.agencia = agencia
-        self.cliente = Cliente
-        self.historico = Historico
+        self.agencia = '0001'
+        self.cliente = cliente
+        self.historico = Historico()
 
     def saldo():
         pass
@@ -35,7 +35,7 @@ class Conta:
     def sacar():
         pass
 
-    def depositar():
+    def depositar(self, saldo, historico):
         pass
     
 class ContaCorrente(Conta):
@@ -46,7 +46,14 @@ class ContaCorrente(Conta):
 
 # Classe Abstrata
 class Transacao(ABC):
-    pass
+    @abstractmethod
+    def valor(self):
+        pass
+    
+    @property
+    @abstractmethod
+    def registrar(self):
+        pass
 
 class Deposito(Transacao):
     pass
@@ -55,7 +62,21 @@ class Saque(Transacao):
     pass
 
 class Historico:
-    pass 
+    def __init__(self, transacoes=[]):
+        self._transacoes = transacoes
+
+    @property
+    def transacoes(self):
+        return self._transacoes
+
+    def adicionar_transacao(self, transacao):
+        self._transacoes.append(
+            {
+                'Tipo': transacao.__class__.__name__,
+                'Valor': transacao.valor,
+                'Data': 'Validar Operação Date Time'
+            }
+        ) 
 
 def menu():
     menu= '''
