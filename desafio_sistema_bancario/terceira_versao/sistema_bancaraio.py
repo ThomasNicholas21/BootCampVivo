@@ -209,9 +209,40 @@ def sacar(clientes):
     
     cliente.realizar_transacao(conta, transacao)
 
+def extrato_usuario(clientes):
+    cpf = input('Informe seu CPF:')
+
+    cliente = filtro_cliente(cpf, clientes)
+    if not cliente:
+        print('Esse cliente não está cadastrado')
+        return
+    
+    conta = filtro_conta(cliente)
+    if not conta:
+        print('Usuário não possui conta')
+        return
+    
+    print('EXTRATO:')
+    transacoes = conta.historico.transacoes
+
+    extrato = ''
+    if not transacoes:
+        print('Nenhum movimento, sem historico de movimentacoes')
+    else:
+        for transacao in transacoes:
+            extrato += f'\n{transacao['Tipo']}\nR${transacao['Valor']:.2f}'
+
+    print(extrato)
+    print(f'Saldo:R${conta.saldo:.2f}')
+    
+
+    
+
+
 teste1 = PessoaFisica('cpf', 'nome', 'data_nascimento', 'endereco')
 conta_teste1 = ContaCorrente(numero='1', cliente=teste1)
 teste1.adicionar_conta(conta_teste1)
+
 def main():
     clientes = [teste1]
     contas = [conta_teste1]
@@ -225,7 +256,7 @@ def main():
             sacar(clientes)
 
         elif opcoes == 'e': # Caso o usuário deseje visualizar o extrato
-            pass
+            extrato_usuario(clientes)
         
         elif opcoes == 'c': # Caso o usuário deseje cadastrar um usuário
             pass
