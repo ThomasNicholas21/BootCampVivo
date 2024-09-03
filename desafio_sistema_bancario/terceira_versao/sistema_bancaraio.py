@@ -150,12 +150,41 @@ Menu de Opções:
 Selecione:'''
     return menu
 
+def filtro_cliente(cpf, clientes):
+    filtro = [cliente for cliente in clientes if cliente.cpf == cpf]
+    return filtro[0] if filtro else None
+
+def filtro_conta(cliente):
+    if not cliente.contas:
+        print('Cliente sem conta!')
+    return cliente.conta[0]
+
+def depositar(clientes):
+    cpf = input('Informe o CPF:')
+    cliente = filtro_cliente(cpf, clientes)
+
+    if not cliente:
+        print('Cliente não encontrado!')
+        return 
+    
+    valor = float(input("Insira a quantidade que será depositada ou digite [0] para voltar: ")) 
+    transacao = Deposito(valor)
+
+    conta = filtro_conta(cliente)
+    
+    if not conta:
+        return
+    
+    cliente.realizar_transacao(conta, transacao)
+
 def main():
+    clientes = []
+    contas = []
 
     while True:
         opcoes = input(menu()).lower().strip() # Chama a função menu para o usuário selecionar qual a opção desejada
         if opcoes == 'd': # Caso o usuário deseje depositar
-            pass
+            depositar(clientes)
             
         elif opcoes == 's': # Caso o usuário deseje sacar
             pass
