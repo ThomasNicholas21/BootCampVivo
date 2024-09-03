@@ -35,7 +35,7 @@ class Conta:
         return self._saldo
     
     @property
-    def saldo(self):
+    def numero(self):
         return self._numero
     
     @property
@@ -60,6 +60,9 @@ class Conta:
             print('Operação concluida, saque efetuado!')
             return True
         
+        elif valor > 500:
+            print('Valor máximo atingido, tente uma valor abaixo de 500.')
+
         else:
             print('Operação desconhecida, valor inválido.')
 
@@ -74,11 +77,22 @@ class Conta:
             print('Operação desconhecida, valor inválido. ')
     
 class ContaCorrente(Conta):
-    def __init__(self, numero, cliente, limite=500, limite_saques = 3):
+    def __init__(self, numero, cliente, limite_saques=3):
         super().__init__(numero, cliente)
-        self._limite = limite
         self._limite_saques = limite_saques
+
+    def sacar(self, valor):
+        numero_saque = len([transacao for transacao in self.historico.transacoes if transacao['Tipo'] == Saque.__name__])
         
+        if numero_saque > self._limite_saques:
+            print('Limite de sque diário atingido.')
+        else:
+            return super().sacar(valor)
+        
+        return False
+    
+    def __str__(self):
+        return f'Agência:{self.agencia}\nNúmero:{self.numero}\nTitular:{self.cliente.nome}'
 
 # Classe Abstrata
 class Transacao(ABC):
@@ -114,7 +128,7 @@ class Saque(Transacao):
         return self._valor
     
     def registrar(self, conta):
-        transacao_efetuada = conta.depositar(self.valor)
+        transacao_efetuada = conta.sacar(self.valor)
 
         if transacao_efetuada:
             conta.historico.adicionar_transacao(self)
@@ -157,7 +171,7 @@ def filtro_cliente(cpf, clientes):
 def filtro_conta(cliente):
     if not cliente.contas:
         print('Cliente sem conta!')
-    return cliente.conta[0]
+    return cliente.contas[0]
 
 def depositar(clientes):
     cpf = input('Informe o CPF:')
@@ -167,7 +181,7 @@ def depositar(clientes):
         print('Cliente não encontrado!')
         return 
     
-    valor = float(input("Insira a quantidade que será depositada ou digite [0] para voltar: ")) 
+    valor = float(input("Insira a quantidade que será depositada: ")) 
     transacao = Deposito(valor)
 
     conta = filtro_conta(cliente)
@@ -177,9 +191,30 @@ def depositar(clientes):
     
     cliente.realizar_transacao(conta, transacao)
 
+def sacar(clientes):
+    cpf = input('Informe seu CPF:')
+    cliente = filtro_cliente(cpf, clientes)
+
+    if not cliente:
+        print('Cliente não encontrado!')
+        return
+    
+    valor = float(input("Informe quanto deseja sacar: "))
+    transacao = Saque(valor)
+
+    conta = filtro_conta(cliente)
+
+    if not conta:
+        return
+    
+    cliente.realizar_transacao(conta, transacao)
+
+teste1 = PessoaFisica('cpf', 'nome', 'data_nascimento', 'endereco')
+conta_teste1 = ContaCorrente(numero='1', cliente=teste1)
+teste1.adicionar_conta(conta_teste1)
 def main():
-    clientes = []
-    contas = []
+    clientes = [teste1]
+    contas = [conta_teste1]
 
     while True:
         opcoes = input(menu()).lower().strip() # Chama a função menu para o usuário selecionar qual a opção desejada
@@ -187,7 +222,7 @@ def main():
             depositar(clientes)
             
         elif opcoes == 's': # Caso o usuário deseje sacar
-            pass
+            sacar(clientes)
 
         elif opcoes == 'e': # Caso o usuário deseje visualizar o extrato
             pass
