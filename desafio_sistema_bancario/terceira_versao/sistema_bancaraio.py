@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
 class Cliente:
-    def __init__(self, endereco, contas=[]):
-        self.endereco = str(endereco)
+    def __init__(self, endereco={}, contas=[]):
+        self.endereco = endereco
         self.contas = contas
 
     def realizar_transacao(self, conta, transacao):
@@ -17,6 +17,9 @@ class PessoaFisica(Cliente):
         self.nome = nome
         self.data_nascimento = data_nascimento
         super().__init__(endereco, contas)
+
+    def __str__(self):
+        return f'{self.__class__.__name__}: {[', '.join(f'{chave} = {valor}'for chave, valor in self.__dict__.items())]}'
 
 class Conta:
     def __init__(self, numero, cliente):
@@ -235,17 +238,40 @@ def extrato_usuario(clientes):
     print(extrato)
     print(f'Saldo:R${conta.saldo:.2f}')
     
+def cadastro_endereco(endereco={}):
+    logradouro = input('Digite seu logradouro:')
+    numero = input('Digite o número:')
+    bairro = input('Digite seu bairro: ')
+    cidade_estado = input('Digite sua Cidade/Estado(Sigla):')
+    endereco.update({'Logradouro':logradouro, 'Numero': numero, 'Bairro': bairro, 'Cidade/Estado': cidade_estado})
+    return endereco
 
-    
 
+def criar_usuario(clientes):
+    cpf = input('Informe seu CPF:')
+    cliente = filtro_cliente(cpf, clientes)
 
-teste1 = PessoaFisica('cpf', 'nome', 'data_nascimento', 'endereco')
-conta_teste1 = ContaCorrente(numero='1', cliente=teste1)
-teste1.adicionar_conta(conta_teste1)
+    if not cliente:
+        print('Iniciando cadastro...')
+        nome_usuario = input('Digite seu nome:')
+        data_de_nascimento = input('Data de Nascimento:')
+        print('**Cadastre seu Endereço**')
+        endereco = {}
+        cadastro_endereco(endereco)
+
+        cliente = PessoaFisica(nome=nome_usuario, data_nascimento=data_de_nascimento, cpf=cpf, endereco=endereco)
+        clientes.append(cliente)
+
+    else: 
+        print('Usuário já possui cadastro.')
+        return
+# teste1 = PessoaFisica('cpf', 'nome', 'data_nascimento', 'endereco')
+# conta_teste1 = ContaCorrente(numero='1', cliente=teste1)
+# teste1.adicionar_conta(conta_teste1)
 
 def main():
-    clientes = [teste1]
-    contas = [conta_teste1]
+    clientes = []
+    contas = []
 
     while True:
         opcoes = input(menu()).lower().strip() # Chama a função menu para o usuário selecionar qual a opção desejada
@@ -259,13 +285,13 @@ def main():
             extrato_usuario(clientes)
         
         elif opcoes == 'c': # Caso o usuário deseje cadastrar um usuário
-            pass
+            criar_usuario(clientes)
         
         elif opcoes == 'ccc': # Caso o usuário deseje criar um contato corrente
             pass
         
         elif opcoes == 'lu': # Caso o usuário deseje listar os dados de um usuário especifico
-            pass
+            print(*clientes, sep='\n')
         
         elif opcoes == 'lc': # Caso o usuário deseje listar contas especificas
             pass
