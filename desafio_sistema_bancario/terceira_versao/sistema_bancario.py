@@ -18,7 +18,7 @@ def main():
         elif opcoes == 'c': # Caso o usuário deseje cadastrar um usuário
             criar_usuario(clientes)
         
-        elif opcoes == 'ccc': # Caso o usuário deseje criar um contato corrente
+        elif opcoes == 'cc': # Caso o usuário deseje criar um contato corrente
             criar_conta(contas, clientes)
         
         elif opcoes == 'lc': # Caso o usuário deseje listar os dados de um usuário especifico
