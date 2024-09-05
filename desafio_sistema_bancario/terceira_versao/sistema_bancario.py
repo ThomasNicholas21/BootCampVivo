@@ -22,7 +22,7 @@ def main():
             criar_conta(contas, clientes)
         
         elif opcoes == 'lc': 
-            print(*clientes, sep='\n')
+            #print(*clientes, sep='\n')
             listagem_conta(contas)
 
         elif opcoes == 'q':
