@@ -160,9 +160,8 @@ Menu de Opções:
 [s] Sacar
 [e] Extrato
 [c] Cadastro de Usuário
-[ccc] Criar Conta Corrente
-[lu] Listar usuários
-[lc] Listar usuários
+[cc] Cadastro Conta
+[lc] Listar contas
 [q] Sair
 Selecione:'''
     return menu
@@ -246,29 +245,62 @@ def cadastro_endereco(endereco={}):
     endereco.update({'Logradouro':logradouro, 'Numero': numero, 'Bairro': bairro, 'Cidade/Estado': cidade_estado})
     return endereco
 
+def realizar_cadastro():
+    realizar_cadastro = input('Desaja realizar o cadastro de uma conta? [S]im ou [N]ão:').lower().startswith('s')
+    if realizar_cadastro:
+        return True
+    return False
 
 def criar_usuario(clientes):
     cpf = input('Informe seu CPF:')
     cliente = filtro_cliente(cpf, clientes)
 
     if not cliente:
-        print('Iniciando cadastro...')
-        nome_usuario = input('Digite seu nome:')
-        data_de_nascimento = input('Data de Nascimento:')
-        print('**Cadastre seu Endereço**')
-        endereco = {}
-        cadastro_endereco(endereco)
+        if realizar_cadastro():
+            print('Iniciando cadastro...')
+            nome_usuario = input('Digite seu nome:')
+            data_de_nascimento = input('Data de Nascimento:')
 
-        cliente = PessoaFisica(nome=nome_usuario, data_nascimento=data_de_nascimento, cpf=cpf, endereco=endereco)
-        clientes.append(cliente)
+            print('**Cadastre seu Endereço**')
+            endereco = {}
+            cadastro_endereco(endereco)
+
+            cliente = PessoaFisica(nome=nome_usuario, data_nascimento=data_de_nascimento, cpf=cpf, endereco=endereco)
+            clientes.append(cliente)
+            print('Cadastro Realizado com Sucesso.')
+        
+        else:
+            print('Cadastro cancelado.')
+            return
 
     else: 
         print('Usuário já possui cadastro.')
         return
-# teste1 = PessoaFisica('cpf', 'nome', 'data_nascimento', 'endereco')
-# conta_teste1 = ContaCorrente(numero='1', cliente=teste1)
-# teste1.adicionar_conta(conta_teste1)
 
+def criar_conta(contas, clientes):
+    cpf = input('Informe seu CPF:')
+    cliente = filtro_cliente(cpf, clientes)
+
+    if not cliente:
+        print('Este usuário não é um cliente.')
+
+    if realizar_cadastro():
+        print('Criando conta...')
+        contador = [cont for cont in contas if cliente.cpf == cpf ]
+        numero_conta = len(contador) + 1
+    
+        conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
+        cliente.contas.append(conta)
+        print('Cadastro finalizado')
+
+    else:
+        print('Cadastro cancelado.')
+        return
+
+def listagem_conta(contas):
+    for conta in contas:
+        print(conta)
+             
 def main():
     clientes = []
     contas = []
@@ -288,13 +320,11 @@ def main():
             criar_usuario(clientes)
         
         elif opcoes == 'ccc': # Caso o usuário deseje criar um contato corrente
-            pass
+            criar_conta(contas, clientes)
         
-        elif opcoes == 'lu': # Caso o usuário deseje listar os dados de um usuário especifico
+        elif opcoes == 'lc': # Caso o usuário deseje listar os dados de um usuário especifico
             print(*clientes, sep='\n')
-        
-        elif opcoes == 'lc': # Caso o usuário deseje listar contas especificas
-            pass
+            listagem_conta(contas)
 
         elif opcoes == 'q': # Caso o usuário deseje encerrar o programa
             print("Obrigado por utilizar nosso sistema!")
