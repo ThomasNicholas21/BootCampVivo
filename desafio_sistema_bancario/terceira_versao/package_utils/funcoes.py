@@ -137,7 +137,9 @@ def criar_conta(contas, clientes):
         numero_conta = len(contador) + 1
     
         conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
+        contas.append(conta)
         cliente.contas.append(conta)
+
         print('Cadastro finalizado')
 
     else:
@@ -147,4 +149,3 @@ def criar_conta(contas, clientes):
 def listagem_conta(contas):
     for conta in contas:
         print(conta)
-             

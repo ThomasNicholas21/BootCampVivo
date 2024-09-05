@@ -5,31 +5,31 @@ def main():
     contas = []
 
     while True:
-        opcoes = input(menu()).lower().strip() # Chama a função menu para o usuário selecionar qual a opção desejada
-        if opcoes == 'd': # Caso o usuário deseje depositar
+        opcoes = input(menu()).lower().strip() 
+        if opcoes == 'd': 
             depositar(clientes)
             
-        elif opcoes == 's': # Caso o usuário deseje sacar
+        elif opcoes == 's':
             sacar(clientes)
 
-        elif opcoes == 'e': # Caso o usuário deseje visualizar o extrato
+        elif opcoes == 'e': 
             extrato_usuario(clientes)
         
-        elif opcoes == 'c': # Caso o usuário deseje cadastrar um usuário
+        elif opcoes == 'c':
             criar_usuario(clientes)
         
-        elif opcoes == 'cc': # Caso o usuário deseje criar um contato corrente
+        elif opcoes == 'cc':
             criar_conta(contas, clientes)
         
-        elif opcoes == 'lc': # Caso o usuário deseje listar os dados de um usuário especifico
+        elif opcoes == 'lc': 
             print(*clientes, sep='\n')
             listagem_conta(contas)
 
-        elif opcoes == 'q': # Caso o usuário deseje encerrar o programa
+        elif opcoes == 'q':
             print("Obrigado por utilizar nosso sistema!")
             break
 
-        else: # Caso o usuário erre o menu
+        else: 
             print("Opção inválida! Por gentileza, selecione uma das opções"
                 "do menu.")
             

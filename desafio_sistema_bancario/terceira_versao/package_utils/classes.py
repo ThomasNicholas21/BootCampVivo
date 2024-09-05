@@ -47,7 +47,7 @@ class Conta:
     
     @property
     def cliente(self):
-        return self.cliente
+        return self._cliente
 
     @property
     def historico(self):
@@ -95,7 +95,7 @@ class ContaCorrente(Conta):
         return False
     
     def __str__(self):
-        return f'Agência:{self.agencia}Número:{self.numero}Titular:{self.cliente.nome}'
+        return f'Agência:{self.agencia}\nNúmero:{self.numero}\nTitular:{self.cliente.nome}'
 
 # Classe Abstrata
 class Transacao(ABC):
